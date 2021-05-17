@@ -27,7 +27,9 @@ public class PlayerController : MonoBehaviour
         {
             RaycastHit[] rays =  Physics.RaycastAll(GetRay());
             foreach(RaycastHit hit in rays){
-                if(hit.transform.GetComponent<CombatTarget>()){
+                CombatTarget target= hit.transform.GetComponent<CombatTarget>();
+                if(target!=null){
+                    if(!GetComponent<Fighter>().CanAttack(target.transform)) continue;
                     if(Input.GetMouseButtonDown(0)){
                         GetComponent<Fighter>().Attack(hit.transform.GetComponent<CombatTarget>());
                     }

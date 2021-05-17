@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Combat;
 using UnityEngine.AI;
+using RPG.Core;
 
 namespace RPG.Movement{
 
-public class Mover : MonoBehaviour
+public class Mover : MonoBehaviour, IAction
 {
     // Start is called before the first frame upda
     [SerializeField] Animator animator;
@@ -28,12 +28,10 @@ public class Mover : MonoBehaviour
         animator.SetFloat("Speed", speed);
     }
 
-    public void StopMove(){
-        nav.isStopped = true;
-    }
+
 
     public void StartMoveAction(Vector3 destination){
-        GetComponent<Fighter>().CancelAttack();
+        GetComponent<Scheduler>().StartAction(this);
         MoveTo(destination);
     }
 
@@ -41,6 +39,10 @@ public class Mover : MonoBehaviour
     {
         nav.SetDestination(destination);
         nav.isStopped = false;
+    }
+
+    public void Cancel(){
+        nav.isStopped = true;
     }
 }
 }
