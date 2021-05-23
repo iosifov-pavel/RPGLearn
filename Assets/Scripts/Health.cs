@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RPG.Combat{
+namespace RPG.Core{
     public class Health : MonoBehaviour
     {
     // Start is called before the first frame update
@@ -15,6 +15,7 @@ namespace RPG.Combat{
             if(health<=0){
                 isDead=true;
                 GetComponent<Animator>().SetTrigger("dead");
+                GetComponent<Scheduler>().CancelCurrentAction();
             } 
             print("HP: "+health);
         }

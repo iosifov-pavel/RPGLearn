@@ -10,16 +10,18 @@ public class Mover : MonoBehaviour, IAction
 {
     // Start is called before the first frame upda
     [SerializeField] Animator animator;
+    Health health;
     NavMeshAgent nav;
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        health = GetComponent<Health>();
     }
 
     void Update()
     {
-
+        nav.enabled = !health.IsDead();
         SetAnimation();
     }
 

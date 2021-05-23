@@ -9,7 +9,7 @@ namespace RPG.Combat{
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] float damage = 5f;
         Health target=null;
-        float timeFromLastAttack = 0;
+        float timeFromLastAttack = Mathf.Infinity;
         private void Update() {
             timeFromLastAttack+=Time.deltaTime;
             if(target!=null){
@@ -32,7 +32,7 @@ namespace RPG.Combat{
             }
         }
 
-        public bool CanAttack(Transform target){
+        public bool CanAttack(GameObject target){
             if(target.GetComponent<Health>().IsDead() || target==null) return false;
             else return true;
         }
@@ -47,7 +47,7 @@ namespace RPG.Combat{
             GetComponent<Animator>().SetTrigger("attack");
         }
 
-        public void Attack(CombatTarget combatTarget){
+        public void Attack(GameObject combatTarget){
             GetComponent<Scheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
             Debug.Log("Attack");

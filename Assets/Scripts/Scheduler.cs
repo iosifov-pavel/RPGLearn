@@ -17,5 +17,9 @@ public class Scheduler : MonoBehaviour
         }
         previousAction = action;
     }
+
+    public void CancelCurrentAction(){
+        StartAction(null);
+    }
 }
 }
