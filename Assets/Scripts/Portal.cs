@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using RPG.Saving;
+using UnityEngine.AI;
 
 namespace RPG.SceneManagement{
 public class Portal : MonoBehaviour
@@ -36,9 +38,13 @@ public class Portal : MonoBehaviour
         //yield return operation.isDone;
         Fader fader = FindObjectOfType<Fader>();
         yield return fader.FadeOut(1);
+        SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+        savingWrapper.Save();
         yield return SceneManager.LoadSceneAsync(sceneToLoad);
         print("Scene Loaded");
+        savingWrapper.Load();
         Portal otherPortal = GetOtherPortal();
+
         Updateplayer(otherPortal);
         yield return fader.FadeIn(1);  
         Destroy(this.gameObject);
@@ -47,7 +53,9 @@ public class Portal : MonoBehaviour
         private void Updateplayer(Portal otherPortal)
         {
             GameObject player = GameObject.FindWithTag("Player");
+            player.GetComponent<NavMeshAgent>().enabled = false;
             player.transform.position = otherPortal.spawnPoint.position;
+            player.GetComponent<NavMeshAgent>().enabled = true;
         }
 
         private Portal GetOtherPortal()

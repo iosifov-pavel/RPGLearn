@@ -29,6 +29,7 @@ public class CinematicControlRemover : MonoBehaviour
     void EnableControl(PlayableDirector director){
         print("Enable Control");
         GameObject player = GameObject.FindWithTag("Player");
+        if(player==null) return;
         player.GetComponent<PlayerController>().enabled = true;
     }
 }
