@@ -10,6 +10,7 @@ public class Mover : MonoBehaviour, IAction
 {
     // Start is called before the first frame upda
     [SerializeField] Animator animator;
+    [SerializeField] float maxSpeed = 6f;
     Health health;
     NavMeshAgent nav;
     void Start()
@@ -32,14 +33,15 @@ public class Mover : MonoBehaviour, IAction
 
 
 
-    public void StartMoveAction(Vector3 destination){
+    public void StartMoveAction(Vector3 destination, float speedMultiplier){
         GetComponent<Scheduler>().StartAction(this);
-        MoveTo(destination);
+        MoveTo(destination, speedMultiplier);
     }
 
-    public void MoveTo(Vector3 destination)
+    public void MoveTo(Vector3 destination, float speedMultiplier)
     {
         nav.SetDestination(destination);
+        nav.speed = maxSpeed * speedMultiplier;
         nav.isStopped = false;
     }
 

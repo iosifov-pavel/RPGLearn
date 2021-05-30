@@ -22,6 +22,7 @@ public class AIController : MonoBehaviour
     [SerializeField] float suspiciousTime = 2f;
     [SerializeField] PatrolPath path = null;
     [SerializeField] float wayPointTolerance = 1f;
+    [Range(0,1f)] [SerializeField] float patrolSpeedMultiplier = 0.2f;
     int currentPointNumber = 0;
 // Start is called before the first frame update
     void Start()
@@ -56,7 +57,7 @@ public class AIController : MonoBehaviour
                 nextPosition = GetCurrentWayPoint();
             }
             if(timeAtPoint>=timeWaitAtPoint){
-                mover.StartMoveAction(nextPosition);
+                mover.StartMoveAction(nextPosition, patrolSpeedMultiplier);
             }
         }
         timeSinseLastSawPlayer += Time.deltaTime;

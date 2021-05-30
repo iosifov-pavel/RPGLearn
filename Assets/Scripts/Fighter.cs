@@ -28,7 +28,7 @@ namespace RPG.Combat{
                         //trigger Hit
                     }    
                 }
-                else GetComponent<Mover>().MoveTo(target.transform.position);
+                else GetComponent<Mover>().MoveTo(target.transform.position, 1f);
             }
         }
 
@@ -61,6 +61,7 @@ namespace RPG.Combat{
         public void Cancel(){
             StopAttack();
             target=null;
+            GetComponent<Mover>().Cancel();
         }
 
         void Hit(){
