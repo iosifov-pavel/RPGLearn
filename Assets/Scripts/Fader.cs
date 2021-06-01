@@ -19,7 +19,9 @@ public class Fader : MonoBehaviour
     {
     }
 
-
+    public void FadeOutImmediate(){
+        group.alpha = 1;
+    }
     public IEnumerator FadeOut(float time){
         while(group.alpha<1){
             group.alpha += Time.deltaTime / time;

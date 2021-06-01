@@ -54,14 +54,18 @@ public class Mover : MonoBehaviour, IAction, ISaveable
 
         public object CaptureState()
         {
-            return new SerializableVector3(transform.position);
+            Dictionary<string,object> data = new Dictionary<string, object>();
+            data["position"] = new SerializableVector3(transform.position);
+            data["rotation"] = new SerializableVector3(transform.eulerAngles);
+            return data;
         }
 
         public void RestoreState(object state)
         {
-            SerializableVector3 positopn = (SerializableVector3) state;
+            Dictionary<string,object> data = (Dictionary<string,object>) state;
             GetComponent<NavMeshAgent>().enabled = false;
-            transform.position = positopn.ToVector();
+            transform.position = ((SerializableVector3)data["posotion"]).ToVector();
+            transform.eulerAngles = ((SerializableVector3)data["rotation"]).ToVector();
             GetComponent<NavMeshAgent>().enabled = true;
         }
     }

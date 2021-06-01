@@ -10,8 +10,12 @@ namespace RPG.SceneManagement{
         // Start is called before the first frame update
         SavingSystem savingSystem;
         const string defaultSaveFile="save";
-        private void Start() {
+        IEnumerator Start() {
             savingSystem = GetComponent<SavingSystem>();
+            Fader fader = FindObjectOfType<Fader>();
+            fader.FadeOutImmediate();
+            yield return savingSystem.LoadLastScene(defaultSaveFile);
+            yield return fader.FadeIn(1);
         }
 
         // Update is called once per frame
