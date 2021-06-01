@@ -32,10 +32,7 @@ public class Portal : MonoBehaviour
 
     private IEnumerator Transition(){
         print("Player IN");
-        //SceneManager.LoadScene(sceneToLoad);
         DontDestroyOnLoad(this.gameObject);
-        //AsyncOperation operation = SceneManager.LoadSceneAsync(sceneToLoad);
-        //yield return operation.isDone;
         Fader fader = FindObjectOfType<Fader>();
         yield return fader.FadeOut(1);
         SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
@@ -44,8 +41,9 @@ public class Portal : MonoBehaviour
         print("Scene Loaded");
         savingWrapper.Load();
         Portal otherPortal = GetOtherPortal();
-
         Updateplayer(otherPortal);
+        yield return new WaitForSeconds(0.5f);
+        //Fader fader1 = FindObjectOfType<Fader>();
         yield return fader.FadeIn(1);  
         Destroy(this.gameObject);
     }
