@@ -43,6 +43,7 @@ MonoBehaviour:
   suspiciousTime: 4
   path: {fileID: 0}
   wayPointTolerance: 1
+  patrolSpeedMultiplier: 0.2
 --- !u!1001 &1710639557750336192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -110,6 +111,11 @@ PrefabInstance:
     - target: {fileID: 1882112310, guid: 2e752ed98069c4b4aafa7fe416068e5d, type: 3}
       propertyPath: m_Speed
       value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 99960167334768077, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: id
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8015540367890335018, guid: 2e752ed98069c4b4aafa7fe416068e5d,
         type: 3}

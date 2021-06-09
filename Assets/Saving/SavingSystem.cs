@@ -14,35 +14,52 @@ namespace RPG.Saving
 
         [SerializeField] string safeFileName = "save";
         public void Save(string saveFile)
+        {   
+            Dictionary<string,object> state = LoadFile(saveFile);
+            CaptureState(state);
+            SaveFile(saveFile, state);
+        }
+
+        private void SaveFile(string saveFile, object state)
         {
             string path = GetPathFromSaveFile(saveFile);
             print("Saving to " + path);
             using (FileStream stream = File.Open(path,FileMode.Create)){
-                Transform player = GetPlayerTransform();
                 BinaryFormatter formatter = new BinaryFormatter();
-                SerializableVector3 graph = new SerializableVector3(player.position);
-                formatter.Serialize(stream, graph);
+                formatter.Serialize(stream, state);
             }
-            
         }
 
-        private Transform GetPlayerTransform()
+        private  void CaptureState(Dictionary<string,object> state)
         {
-            return GameObject.FindGameObjectWithTag("Player").transform;
+            foreach(SaveableEntity saveable in FindObjectsOfType<SaveableEntity>()){
+                state[saveable.GetUniqueIdentifier()] = saveable.CaptureState();
+            }
         }
+
 
         public void Load(string saveFile)
         {
-            string path = GetPathFromSaveFile(saveFile);
-            print("Loading from "+GetPathFromSaveFile(saveFile));
-            using(FileStream stream = File.Open(path,FileMode.Open)){
-                Transform player = GetPlayerTransform();
-                BinaryFormatter formatter = new BinaryFormatter();
-                SerializableVector3 newPos = (SerializableVector3) formatter.Deserialize(stream);
-                Vector3 pos = newPos.ToVector();
-                print(pos);
-                //player.position = DserializeVector(bytes);
+            RestoreState(LoadFile(saveFile));
+        }
 
+        private Dictionary<string,object> LoadFile(string saveFile)
+        {
+            string path = GetPathFromSaveFile(saveFile);
+            if(!File.Exists(path)) return new Dictionary<string, object>();
+            using(FileStream stream = File.Open(path,FileMode.Open)){
+                BinaryFormatter formatter = new BinaryFormatter();
+                return (Dictionary<string,object>)formatter.Deserialize(stream);
+            }
+        }
+
+        private void RestoreState(Dictionary<string,object> state)
+        {
+            foreach(SaveableEntity saveable in FindObjectsOfType<SaveableEntity>()){
+                string key = saveable.GetUniqueIdentifier();
+                if(state.ContainsKey(key)){
+                    saveable.RestoreState(state[key]);
+                }
             }
         }
 
@@ -53,7 +70,7 @@ namespace RPG.Saving
         //    BitConverter.GetBytes(vector.z).CopyTo(vectorBytes,8);
         //    return vectorBytes;
         //}
-//
+        //
         //private Vector3 DserializeVector(byte[] buffer){
         //    Vector3 result = new Vector3();
         //    result.x = BitConverter.ToSingle(buffer,0);
