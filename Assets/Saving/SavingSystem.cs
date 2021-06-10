@@ -20,6 +20,17 @@ namespace RPG.Saving
             SaveFile(saveFile, state);
         }
 
+        public IEnumerator LoadLastScene(string saveFile){
+            Dictionary<string,object> state = LoadFile(saveFile);
+            if(state.ContainsKey("LastScene")){
+                int sceneID = (int)state["LastScene"];
+                if(sceneID != SceneManager.GetActiveScene().buildIndex){
+                    yield return SceneManager.LoadSceneAsync(sceneID);
+                }
+            }        
+            RestoreState(state);
+        }
+
         private void SaveFile(string saveFile, object state)
         {
             string path = GetPathFromSaveFile(saveFile);
@@ -35,6 +46,7 @@ namespace RPG.Saving
             foreach(SaveableEntity saveable in FindObjectsOfType<SaveableEntity>()){
                 state[saveable.GetUniqueIdentifier()] = saveable.CaptureState();
             }
+            state["LastScene"] = SceneManager.GetActiveScene().buildIndex;
         }
 
 

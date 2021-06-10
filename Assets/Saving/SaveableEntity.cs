@@ -11,6 +11,7 @@ namespace RPG.Saving
     public class SaveableEntity : MonoBehaviour
     {
         [SerializeField] string id = "";
+        static Dictionary<string, SaveableEntity> gloabalDic = new Dictionary<string, SaveableEntity>();
         public string GetUniqueIdentifier(){
             return id;
         }
@@ -18,18 +19,19 @@ namespace RPG.Saving
         public object CaptureState(){
             Dictionary<string, object> state = new Dictionary<string, object>();
             foreach(ISaveable saveable in GetComponents<ISaveable>()){
-
+                state[saveable.GetType().ToString()] = saveable.CaptureState();
             }
             return state;
-            //return new SerializableVector3(transform.position);
         }
 
-        public void RestoreState(object state){
-            SerializableVector3 sVector = (SerializableVector3) state;
-            GetComponent<NavMeshAgent>().enabled = false;
-            GetComponent<Scheduler>().CancelCurrentAction();
-            transform.position = sVector.ToVector();
-            GetComponent<NavMeshAgent>().enabled = true;
+        public void RestoreState(object stateD){
+            Dictionary<string, object> state = (Dictionary<string, object>) stateD;
+            foreach(ISaveable saveable in GetComponents<ISaveable>()){
+                string typeString = saveable.GetType().ToString();
+                if(state.ContainsKey(typeString)){
+                    saveable.RestoreState(state[typeString]);
+                }
+            }
         }
 #if UNITY_EDITOR
         private void Update() {
@@ -40,10 +42,26 @@ namespace RPG.Saving
              
 
             print("Editing");
-            if(string.IsNullOrEmpty(property.stringValue)){
+            if(string.IsNullOrEmpty(property.stringValue) || !IsUnique(property.stringValue)){
                 property.stringValue = System.Guid.NewGuid().ToString();
                 serializedObject.ApplyModifiedProperties();
             }
+            gloabalDic[property.stringValue] = this;
+        }
+
+        private bool IsUnique(string needToCheck)
+        {
+            if(!gloabalDic.ContainsKey(needToCheck)) return true;
+            if(gloabalDic[needToCheck] == this) return true;
+            if(gloabalDic[needToCheck]==null){
+                gloabalDic.Remove(needToCheck);
+                return true;
+            }
+            if(gloabalDic[needToCheck].GetUniqueIdentifier() != needToCheck){
+                gloabalDic.Remove(needToCheck);
+                return true;
+            }
+            return false;
         }
 #endif
     }
