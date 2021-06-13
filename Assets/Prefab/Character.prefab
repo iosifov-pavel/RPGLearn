@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5924248751267610961}
   - component: {fileID: 8015540367890335018}
   - component: {fileID: 99960167334768077}
+  - component: {fileID: 211772076695749198}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -104,9 +105,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c12fa5b775ecb649818b04b19abe3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2
   timeBetweenAttacks: 2
-  damage: 5
+  handTransform: {fileID: 0}
+  defaultWeapon: {fileID: 0}
 --- !u!114 &5924248751267610961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,4 +145,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueIdentifier: 
+  id: 
+--- !u!54 &211772076695749198
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958981101632815491}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -5,17 +5,17 @@ using RPG.Movement;
 namespace RPG.Combat{
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1f;
-        [SerializeField] float damage = 5f;
-        [SerializeField] Transform handTransform = null;
-        [SerializeField] Weapon weapon = null;
+        [SerializeField] Transform rightHandTransform = null;
+        [SerializeField] Transform leftHandTransform = null;
+        [SerializeField] Weapon defaultWeapon = null;
+        Weapon currentWeapon = null;
 
         Health target=null;
         float timeFromLastAttack = Mathf.Infinity;
 
         private void Start() {
-            SpawnWeapon();
+            EquipWeapon(defaultWeapon);
         }
         private void Update() {
             timeFromLastAttack+=Time.deltaTime;
@@ -26,7 +26,7 @@ namespace RPG.Combat{
                 } 
                 LookAtEnemy();
                 float range = (target.transform.position-transform.position).magnitude;
-                if(range<=weaponRange)
+                if(range<=currentWeapon.WeaponRange)
                 {
                     GetComponent<Mover>().Cancel();
                     if(timeFromLastAttack>=timeBetweenAttacks){
@@ -73,13 +73,19 @@ namespace RPG.Combat{
 
         void Hit(){
             if(target==null) return;
-            target.TakeDamage(damage);
+            target.TakeDamage(currentWeapon.Damage);
         }
 
-        void SpawnWeapon(){
+        void Shoot(){
+            if (target == null) return;
+            target.TakeDamage(currentWeapon.Damage);
+        }
+
+        public void EquipWeapon(Weapon weapon){
             if(weapon == null) return;
             Animator animator = GetComponent<Animator>();
-            weapon.Spawn(handTransform, animator);
+            weapon.Spawn(rightHandTransform, leftHandTransform, animator);
+            currentWeapon = weapon;
         }
     }
 }

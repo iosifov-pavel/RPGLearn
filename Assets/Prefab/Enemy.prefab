@@ -101,6 +101,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 679ff741e12a7e740819ede24a7000b7, type: 3}
+--- !u!4 &1710639557750719276 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 403948, guid: 679ff741e12a7e740819ede24a7000b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1710639557750336192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1710639557750793028 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 461188, guid: 679ff741e12a7e740819ede24a7000b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1710639557750336192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8472573074580583850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,6 +129,33 @@ PrefabInstance:
       propertyPath: id
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 444319851879225705, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c33bbfe0420332488589e1361f709a9,
+        type: 2}
+    - target: {fileID: 444319851879225705, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c33bbfe0420332488589e1361f709a9,
+        type: 2}
+    - target: {fileID: 444319851879225705, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: handTransform
+      value: 
+      objectReference: {fileID: 1710639557750793028}
+    - target: {fileID: 444319851879225705, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 1710639557750719276}
+    - target: {fileID: 444319851879225705, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 1710639557750793028}
     - target: {fileID: 8015540367890335018, guid: 2e752ed98069c4b4aafa7fe416068e5d,
         type: 3}
       propertyPath: health

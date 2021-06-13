@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerCamera : MonoBehaviour {
 
     public float Distance = 5.0f;
     public float Height = 2.0f;
 
-    public GameObject PlayerTarget;
+    public GameObject PlayerTarget;    
 
     private PlayerInputController input;
     private Transform target;
@@ -14,13 +15,15 @@ public class PlayerCamera : MonoBehaviour {
 
     private SuperCharacterController controller;
 
+	// Use this for initialization
 	void Start () {
         input = PlayerTarget.GetComponent<PlayerInputController>();
         machine = PlayerTarget.GetComponent<PlayerMachine>();
         controller = PlayerTarget.GetComponent<SuperCharacterController>();
         target = PlayerTarget.transform;
 	}
-
+	
+	// Update is called once per frame
 	void LateUpdate () {
         transform.position = target.position;
 
