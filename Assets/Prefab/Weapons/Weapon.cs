@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using RPG.Core;
+using UnityEngine;
 
 namespace RPG.Combat{
     [CreateAssetMenu(fileName = "Weapon", menuName = "Weapons/Make New Weapon", order = 0)]
@@ -9,15 +11,46 @@ namespace RPG.Combat{
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float damage = 5f;
         [SerializeField] bool isRightHand = true;
+        [SerializeField] Projectile projectile = null;
+        const string weaponName = "Weapon";
 
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator){
-            if(weaponPrefab != null){
-                if(isRightHand) Instantiate(weaponPrefab, rightHand);
-                else Instantiate(weaponPrefab, leftHand);
+            DestroyOldWeapon(rightHand,leftHand);
+            if(weaponPrefab != null)
+            {
+                Transform hand = GetHand(rightHand, leftHand);
+                GameObject weapon = Instantiate(weaponPrefab,hand);
+                weapon.name = weaponName;
             }
-            if(animatorOverride != null){
+            if (animatorOverride != null){
                 animator.runtimeAnimatorController = animatorOverride;
             }
+        }
+
+        private void DestroyOldWeapon(Transform rightHand, Transform leftHand)
+        {
+            Transform curentWeapon = rightHand.Find(weaponName);
+            if(curentWeapon==null){
+                curentWeapon = leftHand.Find(weaponName);
+            }
+            if(curentWeapon==null) return;
+            curentWeapon.name = "DESTROYING";
+            Destroy(curentWeapon.gameObject);
+        }
+
+        private Transform GetHand(Transform rightHand, Transform leftHand)
+        {
+            if (isRightHand) return rightHand;
+            else return leftHand;
+        }
+
+        public bool HasProjectile(){
+            return projectile != null;
+        }
+
+        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target){
+            Projectile projectileInstance = Instantiate(projectile, GetHand(rightHand,leftHand).position,Quaternion.identity);
+            projectileInstance.SetTarget(target, damage);
         }
 
         public float Damage{

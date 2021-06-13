@@ -78,7 +78,9 @@ namespace RPG.Combat{
 
         void Shoot(){
             if (target == null) return;
-            target.TakeDamage(currentWeapon.Damage);
+            if(currentWeapon.HasProjectile()){
+                currentWeapon.LaunchProjectile(rightHandTransform,leftHandTransform,target);
+            }
         }
 
         public void EquipWeapon(Weapon weapon){
