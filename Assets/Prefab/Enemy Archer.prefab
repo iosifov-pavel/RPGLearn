@@ -77,6 +77,11 @@ PrefabInstance:
       propertyPath: chaseDistance
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 4958077351660635491, guid: 35cb7398d1a28c84ca2c1de2aeb352f8,
+        type: 3}
+      propertyPath: characterClass
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8340150698310134979, guid: 35cb7398d1a28c84ca2c1de2aeb352f8,
         type: 3}
       propertyPath: defaultWeapon

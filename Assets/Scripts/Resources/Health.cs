@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using RPG.Stats;
 
 namespace RPG.Core{
     public class Health : MonoBehaviour, ISaveable
@@ -32,7 +33,7 @@ namespace RPG.Core{
         }
         void Start()
         {
-
+            health = GetComponent<BaseStats>().GetHealth();
         }
         // Update is called once per frame
         void Update()
