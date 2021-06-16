@@ -8,6 +8,9 @@ public class Projectile : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] float speed = 3f;
+    [SerializeField] bool isHoming = false;
+    [SerializeField] float lifeTime = 4f;
+    [SerializeField] GameObject hitEffect = null;
     Health target = null;
     float damage =0;
 
@@ -19,14 +22,19 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        lifeTime -=Time.deltaTime;
+        if(lifeTime<0) Destroy(gameObject);
         if(target==null) return;
-        transform.LookAt(GetAimLocation());
+        if(isHoming && !target.IsDead()){
+            transform.LookAt(GetAimLocation());
+        }
         transform.Translate(Vector3.forward*speed*Time.deltaTime);
     }
 
     public void SetTarget(Health targetIN, float damageIN){
         target = targetIN;
         damage = damageIN;
+        transform.LookAt(GetAimLocation());
     }
 
     private Vector3 GetAimLocation()
@@ -39,8 +47,11 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject==target.gameObject){
+        if(other.gameObject==target.gameObject && !target.IsDead()){
             target.TakeDamage(damage);
+            if(hitEffect!=null){
+                Instantiate(hitEffect, GetAimLocation(), transform.rotation);
+            }
             Destroy(gameObject);
         }
     }
