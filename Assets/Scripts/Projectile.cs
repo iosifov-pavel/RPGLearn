@@ -50,9 +50,10 @@ public class Projectile : MonoBehaviour
         if(other.gameObject==target.gameObject && !target.IsDead()){
             target.TakeDamage(damage);
             if(hitEffect!=null){
-                Instantiate(hitEffect, GetAimLocation(), transform.rotation);
+                GameObject effect = Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
             Destroy(gameObject);
         }
     }
+
 }
