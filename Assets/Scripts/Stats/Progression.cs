@@ -5,26 +5,35 @@ using RPG.Stats;
 public class Progression : ScriptableObject {
     [SerializeField] ProgressionCharacterClass[] characterClasses = null;
 
-    public float GetHealth(CharacterClasses cClass, int level){
-        float health = 0;
+    public float GetStat(Stat stat,CharacterClasses cClass, int level){
         foreach(ProgressionCharacterClass cls in characterClasses){
             if(cls.characterClass==cClass){
-                health = cls.GetHealthProg(level-1);
+                foreach(ProgressionStat statP in cls.stats){
+                    if(statP.stat==stat){
+                        return statP.levels[level];
+                    }
+                }
             }
         }
-        return health;
+        return 0;
     }
 
 
     [System.Serializable]
     public class ProgressionCharacterClass{
         public CharacterClasses characterClass;
-        public int[] health;
+        public ProgressionStat[] stats;
 
-        public int GetHealthProg(int index){
+        public int GetStat(int index){
             if(index<0) return 0;
-            return health[index];
+            return 10;
         }
+    }
+
+    [System.Serializable]
+    public class ProgressionStat{
+        public Stat stat;
+        public float[] levels;
     }
     
 }

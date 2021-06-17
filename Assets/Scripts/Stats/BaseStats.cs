@@ -12,9 +12,13 @@ public class BaseStats : MonoBehaviour
     [SerializeField] CharacterClasses characterClass;
     [SerializeField] Progression progression;
 
-    public float GetHealth(){
-        return progression.GetHealth(characterClass, startingLevel);
+    public float GetStat(Stat stat){
+        return progression.GetStat(stat,characterClass, startingLevel-1);
     }
+
+    //public float GetExpierenceReward(){
+    //    return progression.GetStat(Stat.Expierence,characterClass, startingLevel-1);
+    //}
 }
 
 

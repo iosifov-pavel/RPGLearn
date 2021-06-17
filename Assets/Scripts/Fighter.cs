@@ -46,6 +46,10 @@ namespace RPG.Combat{
             else return true;
         }
 
+        public Health GetTarget(){
+            return target;
+        }
+
         void LookAtEnemy(){
             transform.LookAt(target.transform);
         }
@@ -75,13 +79,13 @@ namespace RPG.Combat{
 
         void Hit(){
             if(target==null) return;
-            target.TakeDamage(currentWeapon.Damage);
+            target.TakeDamage(gameObject, currentWeapon.Damage);
         }
 
         void Shoot(){
             if (target == null) return;
             if(currentWeapon.HasProjectile()){
-                currentWeapon.LaunchProjectile(rightHandTransform,leftHandTransform,target);
+                currentWeapon.LaunchProjectile(rightHandTransform,leftHandTransform,target, gameObject);
             }
         }
 

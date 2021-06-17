@@ -10,12 +10,16 @@ namespace RPG.Core{
     // Start is called before the first frame update
         [SerializeField]float health = 100f;
         bool isDead = false;
+        BaseStats stats;
 
-        public void TakeDamage(float damage){
+        public void TakeDamage(GameObject instigator, float damage){
             if(isDead) return;
             health = Mathf.Max(health-damage,0);
             if(health<=0)
             {
+                if(instigator.GetComponent<Expierence>()){
+                    instigator.GetComponent<Expierence>().GainExpierence(stats.GetStat(Stat.ExpierenceReward));
+                }
                 Die();
             }
             print("HP: "+health);
@@ -28,12 +32,17 @@ namespace RPG.Core{
             GetComponent<Scheduler>().CancelCurrentAction();
         }
 
+        public float GetPercentage(){
+            return (health / stats.GetStat(Stat.Health))*100;
+        }
+
         public bool IsDead(){
             return isDead;
         }
         void Start()
         {
-            health = GetComponent<BaseStats>().GetHealth();
+            stats = GetComponent<BaseStats>();
+            health = stats.GetStat(Stat.Health);
         }
         // Update is called once per frame
         void Update()

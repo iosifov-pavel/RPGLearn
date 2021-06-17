@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] float lifeTime = 4f;
     [SerializeField] GameObject hitEffect = null;
     Health target = null;
+    GameObject instigator = null;
     float damage =0;
 
     void Start()
@@ -31,9 +32,10 @@ public class Projectile : MonoBehaviour
         transform.Translate(Vector3.forward*speed*Time.deltaTime);
     }
 
-    public void SetTarget(Health targetIN, float damageIN){
+    public void SetTarget(Health targetIN, float damageIN, GameObject instigatorIN){
         target = targetIN;
         damage = damageIN;
+        instigator = instigatorIN;
         transform.LookAt(GetAimLocation());
     }
 
@@ -48,7 +50,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject==target.gameObject && !target.IsDead()){
-            target.TakeDamage(damage);
+            target.TakeDamage(instigator, damage);
             if(hitEffect!=null){
                 GameObject effect = Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
