@@ -8,12 +8,13 @@ namespace RPG.Core{
     public class Health : MonoBehaviour, ISaveable
     {
     // Start is called before the first frame update
-        [SerializeField]float health = 100f;
+        float health = -1f;
         bool isDead = false;
         BaseStats stats;
 
         public void TakeDamage(GameObject instigator, float damage){
             if(isDead) return;
+            print(gameObject.name + " D "+ damage);
             health = Mathf.Max(health-damage,0);
             if(health<=0)
             {
@@ -36,12 +37,27 @@ namespace RPG.Core{
             return (health / stats.GetStat(Stat.Health))*100;
         }
 
+        public float GetHP(){
+            return health;
+        }
+
+        public float GetMAXHp(){
+            return stats.GetStat(Stat.Health);
+        }
+
         public bool IsDead(){
             return isDead;
         }
         void Start()
         {
             stats = GetComponent<BaseStats>();
+            if(health<0){
+                health = stats.GetStat(Stat.Health);
+            }
+            stats.onLevelUp+=HealOnLevelUp;
+        }
+
+        void HealOnLevelUp(){
             health = stats.GetStat(Stat.Health);
         }
         // Update is called once per frame

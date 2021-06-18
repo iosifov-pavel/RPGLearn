@@ -2,9 +2,11 @@ using UnityEngine;
 using RPG.Core;
 using RPG.Movement;
 using RPG.Saving;
+using RPG.Stats;
+using System.Collections.Generic;
 
 namespace RPG.Combat{
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
@@ -79,13 +81,13 @@ namespace RPG.Combat{
 
         void Hit(){
             if(target==null) return;
-            target.TakeDamage(gameObject, currentWeapon.Damage);
+            target.TakeDamage(gameObject, GetComponent<BaseStats>().GetStat(Stat.Damage));
         }
 
         void Shoot(){
             if (target == null) return;
             if(currentWeapon.HasProjectile()){
-                currentWeapon.LaunchProjectile(rightHandTransform,leftHandTransform,target, gameObject);
+                currentWeapon.LaunchProjectile(rightHandTransform,leftHandTransform,target, gameObject,GetComponent<BaseStats>().GetStat(Stat.Damage));
             }
         }
 
@@ -106,6 +108,20 @@ namespace RPG.Combat{
             string weaponName = (string)state;
             Weapon weapon = Resources.Load<Weapon>(weaponName);
             EquipWeapon(weapon);
+        }
+
+        public IEnumerable<float> GetAditiveModifier(Stat stat)
+        {
+            if(stat == Stat.Damage){
+                yield return currentWeapon.Damage;
+            }
+        }
+
+        public IEnumerable<float> GetPercentModifier(Stat stat)
+        {
+            if(stat == Stat.Damage){
+                yield return currentWeapon.GetPercentBonus();
+            }
         }
     }
 }

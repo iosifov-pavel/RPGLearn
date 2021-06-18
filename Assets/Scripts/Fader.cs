@@ -9,10 +9,10 @@ public class Fader : MonoBehaviour
     CanvasGroup group;
     [SerializeField] float timeToFade = 2;
     private void Awake() {
+        group = GetComponent<CanvasGroup>();
     }
     void Start()
     {
-        group = GetComponent<CanvasGroup>();
     }
     // Update is called once per frame
     void Update()

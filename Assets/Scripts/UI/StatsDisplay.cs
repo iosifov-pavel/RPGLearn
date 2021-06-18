@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RPG.Combat;
 using RPG.Core;
+using RPG.Stats;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class StatsDisplay : MonoBehaviour
     [SerializeField] Text healthText;
     [SerializeField] Text enemyText;
     [SerializeField] Text expText;
+    [SerializeField] Text level;
 
     private void Awake() {
         health = GameObject.FindWithTag("Player").GetComponent<Health>();
@@ -25,12 +27,13 @@ public class StatsDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        level.text = health.GetComponent<BaseStats>().GetLevel().ToString();
         expText.text = health.GetComponent<Expierence>().GetExpValue().ToString();
-        healthText.text = string.Format("{0:0.0}%",health.GetPercentage());
+        healthText.text = string.Format("{0}/{1}",health.GetHP(),health.GetMAXHp());
         target = health.GetComponent<Fighter>().GetTarget();
         if(target==null){
             enemyText.text = string.Format("N/A");
         }
-        else enemyText.text = string.Format("{0:0.0}%",target.GetPercentage());
+        else enemyText.text = string.Format("{0}/{1}",target.GetHP(),target.GetMAXHp());
     }
 }

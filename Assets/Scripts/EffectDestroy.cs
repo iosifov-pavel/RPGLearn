@@ -5,6 +5,7 @@ using UnityEngine;
 public class EffectDestroy : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField] GameObject target = null;
     void Start()
     {
         
@@ -14,7 +15,10 @@ public class EffectDestroy : MonoBehaviour
     void Update()
     {
         if(!GetComponent<ParticleSystem>().IsAlive()){
-            Destroy(gameObject);
+            if(target!=null){
+                Destroy(target);
+            }
+            else Destroy(gameObject);
         }
     }
 }

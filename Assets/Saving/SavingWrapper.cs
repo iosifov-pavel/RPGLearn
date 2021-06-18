@@ -10,7 +10,11 @@ namespace RPG.SceneManagement{
         // Start is called before the first frame update
         SavingSystem savingSystem;
         const string defaultSaveFile="save";
-        IEnumerator Start() {
+
+        private void Awake() {
+            StartCoroutine(LoadLastScene());
+        }
+        IEnumerator LoadLastScene() {
             savingSystem = GetComponent<SavingSystem>();
             Fader fader = FindObjectOfType<Fader>();
             fader.FadeOutImmediate();
@@ -27,6 +31,9 @@ namespace RPG.SceneManagement{
             if(Input.GetKeyDown(KeyCode.S)){
                 Save();
             }
+            if(Input.GetKeyDown(KeyCode.D)){
+                DeleteSave();
+            }
         }
 
         public void Save()
@@ -37,6 +44,10 @@ namespace RPG.SceneManagement{
         public void Load()
         {
             savingSystem.Load(defaultSaveFile);
+        }
+
+        public void DeleteSave(){
+            GetComponent<SavingSystem>().Delete(defaultSaveFile);
         }
     }
 }

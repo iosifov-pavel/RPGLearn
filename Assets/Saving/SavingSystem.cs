@@ -41,6 +41,12 @@ namespace RPG.Saving
             }
         }
 
+        internal void Delete(string defaultSaveFile)
+        {
+            string path = GetPathFromSaveFile(defaultSaveFile);
+            File.Delete(path);
+        }
+
         private  void CaptureState(Dictionary<string,object> state)
         {
             foreach(SaveableEntity saveable in FindObjectsOfType<SaveableEntity>()){

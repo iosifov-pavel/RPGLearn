@@ -4,5 +4,7 @@ using UnityEngine;
 
 public enum Stat{
     Health,
-    ExpierenceReward
+    ExpierenceReward,
+    ExpToLevelUp,
+    Damage
 }

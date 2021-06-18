@@ -17,5 +17,6 @@ MonoBehaviour:
     type: 3}
   weaponRange: 2
   damage: 10
+  perecentBonus: 10
   isRightHand: 1
   projectile: {fileID: 0}
