@@ -25,12 +25,14 @@ public class AIController : MonoBehaviour
     [Range(0,1f)] [SerializeField] float patrolSpeedMultiplier = 0.2f;
     int currentPointNumber = 0;
 // Start is called before the first frame update
-    void Start()
-    {
+    private void Awake() {
         fighter = GetComponent<Fighter>();
         mover = GetComponent<Mover>();
         player = GameObject.FindWithTag("Player");
         health = GetComponent<Health>();
+    }
+    void Start()
+    {
         guardPosition = transform.position;
     }
     // Update is called once per frame

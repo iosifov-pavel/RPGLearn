@@ -14,71 +14,78 @@ public class BaseStats : MonoBehaviour
     [SerializeField] Progression progression;
     [SerializeField] GameObject LvlUpEffect;
     public event Action onLevelUp;
+    Expierence expierence = null;
     int currentLevel = 0;
+    private void Awake() {
+        expierence = GetComponent<Expierence>();
+    }
+    private void OnEnable() {
+        if (expierence != null)
+        {
+            expierence.onExpGained += UpdateLevel;
+        }
+    }
+    private void OnDisable() {
+        if (expierence != null)
+        {
+            expierence.onExpGained -= UpdateLevel;
+        }    
+    }
     private void Start() {
         currentLevel = CalculateLevel();
-        Expierence expierence = GetComponent<Expierence>();
-        if(expierence!=null){
-            expierence.onExpGained+=UpdateLevel;
-        }
     }
 
     public float GetStat(Stat stat)
-        {
-            return (GetBaseStat(stat) + GetAdditiveModifier(stat)) * (1f + GetPercentModifier(stat)/100f);
-        }
-
-        private float GetPercentModifier(Stat stat)
-        {
-            float result =0;
-            foreach(IModifierProvider provider in GetComponents<IModifierProvider>()){
-                foreach(float modifiers in provider.GetPercentModifier(stat)){
-                    result += modifiers;
-                }
-            }
-            return result;
-        }
-
-        private float GetBaseStat(Stat stat)
-        {
-            return progression.GetStat(stat, characterClass, GetLevel());
-        }
-
-        private float GetAdditiveModifier(Stat stat)
-        {
-            float result =0;
-            foreach(IModifierProvider provider in GetComponents<IModifierProvider>()){
-                foreach(float modifiers in provider.GetAditiveModifier(stat)){
-                    result += modifiers;
-                }
-            }
-            return result;
-        }
-
-        private void UpdateLevel() {
-        if(characterClass!=CharacterClasses.Player) return;
-        int newLevel = CalculateLevel();
-        if(newLevel>currentLevel){
-            currentLevel = newLevel;
-            LevelUpEffect();
-            onLevelUp();
-        }
+    {
+        return (GetBaseStat(stat) + GetAdditiveModifier(stat)) * (1f + GetPercentModifier(stat)/100f);
     }
 
-        private void LevelUpEffect()
-        {
-            Instantiate(LvlUpEffect,transform);
+    private float GetPercentModifier(Stat stat)
+    {
+        float result =0;
+        foreach(IModifierProvider provider in GetComponents<IModifierProvider>()){
+            foreach(float modifiers in provider.GetPercentModifier(stat)){
+                result += modifiers;
+            }
         }
+        return result;
+    }
+    private float GetBaseStat(Stat stat)
+    {
+        return progression.GetStat(stat, characterClass, GetLevel());
+    }
+    private float GetAdditiveModifier(Stat stat)
+    {
+        float result =0;
+        foreach(IModifierProvider provider in GetComponents<IModifierProvider>()){
+            foreach(float modifiers in provider.GetAditiveModifier(stat)){
+                result += modifiers;
+            }
+        }
+        return result;
+    }
+    private void UpdateLevel() {
+    if(characterClass!=CharacterClasses.Player) return;
+    int newLevel = CalculateLevel();
+    if(newLevel>currentLevel){
+        currentLevel = newLevel;
+        LevelUpEffect();
+        onLevelUp();
+    }
+    }
 
-        public int GetLevel(){
-        if(currentLevel<1){
-            currentLevel = CalculateLevel();
-        }
-        return currentLevel;
+    private void LevelUpEffect()
+    {
+        Instantiate(LvlUpEffect,transform);
+    }
+    public int GetLevel(){
+    if(currentLevel<1){
+        currentLevel = CalculateLevel();
+    }
+    return currentLevel;
     }
 
     public int CalculateLevel(){
-            Expierence expierence = GetComponent<Expierence>();
             if(expierence==null) return startingLevel;
             float currentXP = expierence.GetExpValue();
             int maxLevel = progression.GetLevels(Stat.ExpToLevelUp, characterClass);
@@ -95,7 +102,4 @@ public class BaseStats : MonoBehaviour
     //    return progression.GetStat(Stat.Expierence,characterClass, startingLevel-1);
     //}
 }
-
-
-
 }

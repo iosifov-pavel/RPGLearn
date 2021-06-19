@@ -14,11 +14,14 @@ public class Mover : MonoBehaviour, IAction, ISaveable
     [SerializeField] float maxSpeed = 6f;
     Health health;
     NavMeshAgent nav;
-    void Start()
-    {
+
+    private void Awake() {
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         health = GetComponent<Health>();
+    }
+    void Start()
+    {
     }
 
     void Update()
@@ -63,10 +66,10 @@ public class Mover : MonoBehaviour, IAction, ISaveable
         public void RestoreState(object state)
         {
             Dictionary<string,object> data = (Dictionary<string,object>) state;
-            GetComponent<NavMeshAgent>().enabled = false;
+            nav.enabled = false;
             transform.position = ((SerializableVector3)data["position"]).ToVector();
             transform.eulerAngles = ((SerializableVector3)data["rotation"]).ToVector();
-            GetComponent<NavMeshAgent>().enabled = true;
+            nav.enabled = true;
             GetComponent<Scheduler>().CancelCurrentAction();
         }
     }

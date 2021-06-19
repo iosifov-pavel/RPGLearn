@@ -22,12 +22,11 @@ namespace RPG.Saving
 
         public IEnumerator LoadLastScene(string saveFile){
             Dictionary<string,object> state = LoadFile(saveFile);
+            int sceneID =SceneManager.GetActiveScene().buildIndex;
             if(state.ContainsKey("LastScene")){
-                int sceneID = (int)state["LastScene"];
-                if(sceneID != SceneManager.GetActiveScene().buildIndex){
-                    yield return SceneManager.LoadSceneAsync(sceneID);
-                }
-            }        
+                sceneID = (int)state["LastScene"];
+            }
+            yield return SceneManager.LoadSceneAsync(sceneID);   
             RestoreState(state);
         }
 

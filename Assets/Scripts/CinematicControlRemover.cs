@@ -11,8 +11,14 @@ public class CinematicControlRemover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+    private void OnEnable() {
         GetComponent<PlayableDirector>().played += DisableControl;
         GetComponent<PlayableDirector>().stopped += EnableControl;
+    }
+    private void OnDisable() {
+        GetComponent<PlayableDirector>().played -= DisableControl;
+        GetComponent<PlayableDirector>().stopped -= EnableControl;
     }
     // Update is called once per frame
     void Update()
