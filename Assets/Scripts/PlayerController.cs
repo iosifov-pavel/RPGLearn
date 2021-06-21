@@ -13,12 +13,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     Health health;
 
-    enum Cursors{
-        None,
-        Movement,
-        Combat,
-        UI
-    }
+
     [System.Serializable]
     struct CursorMaping{
         public Cursors type;
@@ -46,9 +41,34 @@ public class PlayerController : MonoBehaviour
                 SetCursor(Cursors.None);
                 return;
             } 
-            if(InteractWithCombat()) return;
+            if(InteractWithComponent()) return;
             if(InteractWithMovement()) return;
             SetCursor(Cursors.None);
+        }
+
+        private bool InteractWithComponent()
+        {
+            RaycastHit[] rays =  RayCastSorted();
+            foreach(RaycastHit hit in rays){
+                IRaycastable[] raycasts = hit.transform.GetComponents<IRaycastable>();
+                foreach(IRaycastable raycast in raycasts){
+                    if(raycast.HandleRaycast(this)){
+                        SetCursor(raycast.GetCursorType());
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        RaycastHit[] RayCastSorted(){
+            RaycastHit[] hits = Physics.RaycastAll(GetRay());
+            float[] distances = new float[hits.Length];
+            for(int i=0;i<hits.Length;i++){
+                distances[i] = hits[i].distance;
+            }
+            Array.Sort(distances,hits);
+            return hits;
         }
 
         private bool InteractWithUI()
@@ -56,22 +76,6 @@ public class PlayerController : MonoBehaviour
             return EventSystem.current.IsPointerOverGameObject();
         }
 
-        private bool InteractWithCombat()
-        {
-            RaycastHit[] rays =  Physics.RaycastAll(GetRay());
-            foreach(RaycastHit hit in rays){
-                CombatTarget target= hit.transform.GetComponent<CombatTarget>();
-                if(target!=null){
-                    if(!GetComponent<Fighter>().CanAttack(target.gameObject)) continue;
-                    if(Input.GetMouseButton(0)){
-                        GetComponent<Fighter>().Attack(target.gameObject);
-                    }
-                    SetCursor(Cursors.Combat);
-                    return true;
-                }
-            }
-            return false;
-        }
 
         private void SetCursor(Cursors cursor)
         {
