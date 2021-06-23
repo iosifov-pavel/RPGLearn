@@ -3,19 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
 using RPG.Stats;
+using UnityEngine.Events;
 
 namespace RPG.Core{
     public class Health : MonoBehaviour, ISaveable
     {
     // Start is called before the first frame update
         float health = -1f;
+        [SerializeField] TakeDamageEvent takeDamage;
+        [SerializeField] TakeDamageEvent updateBar;
         bool isDead = false;
         BaseStats stats;
+        [System.Serializable]
+        public class TakeDamageEvent : UnityEvent<float>{
+
+        }
 
         public void TakeDamage(GameObject instigator, float damage){
             if(isDead) return;
             print(gameObject.name + " D "+ damage);
             health = Mathf.Max(health-damage,0);
+            float percent = GetPercentage()/100f;
+            takeDamage.Invoke(damage);
+            updateBar.Invoke(percent);
             if(health<=0)
             {
                 if(instigator.GetComponent<Expierence>()){

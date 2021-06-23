@@ -6,6 +6,7 @@ using RPG.Combat;
 using RPG.Core;
 using System;
 using UnityEngine.EventSystems;
+using UnityEngine.AI;
 
 namespace RPG.Control{
 public class PlayerController : MonoBehaviour
@@ -94,17 +95,44 @@ public class PlayerController : MonoBehaviour
 
         private bool InteractWithMovement()
         {
-            RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetRay(), out hit);
+            Vector3 target;
+            bool hasHit = RaycastNavMesh(out target);
             if (hasHit)
             {
                 if(Input.GetMouseButton(0)){
-                    GetComponent<Mover>().StartMoveAction(hit.point, 1f);
+                    GetComponent<Mover>().StartMoveAction(target, 1f);
                 }
                 SetCursor(Cursors.Movement);
                 return true;
             }
             return false;
+        }
+
+        private bool RaycastNavMesh(out Vector3 target){
+            target = new Vector3();
+            RaycastHit hit;
+            bool hasHit = Physics.Raycast(GetRay(), out hit);
+            if(!hasHit) return false;
+            NavMeshHit navMeshHit;
+            bool hasToNavMesh = NavMesh.SamplePosition(hit.point, out navMeshHit, 1f, NavMesh.AllAreas);
+            if(!hasToNavMesh) return false;
+            target = navMeshHit.position;
+            NavMeshPath path = new NavMeshPath();
+            bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
+            if(!hasPath) return false;
+            if(path.status != NavMeshPathStatus.PathComplete) return false;
+            if(GetPathLength(path)>40f) return false;
+            return true;
+        }
+
+        private float GetPathLength(NavMeshPath path)
+        {
+            float result = 0;
+            if(path.corners.Length<2) return result;
+            for(int i =0;i<path.corners.Length-1;i++){
+                result += Vector3.Distance(path.corners[i+1],path.corners[i]);
+            }
+            return result;
         }
 
         private static Ray GetRay()
