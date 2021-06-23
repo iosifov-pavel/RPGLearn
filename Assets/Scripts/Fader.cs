@@ -8,6 +8,7 @@ public class Fader : MonoBehaviour
     // Start is called before the first frame update
     CanvasGroup group;
     [SerializeField] float timeToFade = 2;
+    Coroutine activeCoroutine = null;
     private void Awake() {
         group = GetComponent<CanvasGroup>();
     }
@@ -23,6 +24,14 @@ public class Fader : MonoBehaviour
         group.alpha = 1;
     }
     public IEnumerator FadeOut(float time){
+        if(activeCoroutine!=null){
+            StopCoroutine(activeCoroutine);
+        }
+        activeCoroutine = StartCoroutine(FORoutine(time));
+        yield return activeCoroutine;
+    }
+
+    private IEnumerator FORoutine(float time){
         while(group.alpha<1){
             group.alpha += Time.deltaTime / time;
             yield return null;
@@ -31,6 +40,14 @@ public class Fader : MonoBehaviour
 
     public IEnumerator FadeIn(float time)
     {
+        if(activeCoroutine!=null){
+            StopCoroutine(activeCoroutine);
+        }
+        activeCoroutine = StartCoroutine(FIRoutine(time));
+        yield return activeCoroutine;
+    }
+
+    private IEnumerator FIRoutine(float time){
         while (group.alpha > 0)
         {
             group.alpha -= Time.deltaTime / time;

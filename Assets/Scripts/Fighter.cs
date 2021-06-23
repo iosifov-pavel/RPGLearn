@@ -17,6 +17,10 @@ namespace RPG.Combat{
         Health target=null;
         float timeFromLastAttack = Mathf.Infinity;
 
+        private void Awake() {
+            
+        }
+
         private void Start() {
             if(currentWeapon!=null) return;
             EquipWeapon(defaultWeapon);
