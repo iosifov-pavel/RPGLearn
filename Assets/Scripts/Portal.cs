@@ -44,7 +44,6 @@ public class Portal : MonoBehaviour
         Updateplayer(otherPortal);
         savingWrapper.Save();
         yield return new WaitForSeconds(0.5f);
-        //Fader fader1 = FindObjectOfType<Fader>();
         yield return fader.FadeIn(1);  
         Destroy(this.gameObject);
     }
