@@ -57,7 +57,7 @@ public class Projectile : MonoBehaviour
             if(hitEffect!=null){
                 GameObject effect = Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
-            Destroy(gameObject,1f);
+            Destroy(gameObject,0.2f);
         }
     }
 
