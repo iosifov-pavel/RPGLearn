@@ -12,6 +12,7 @@ namespace RPG.Core{
         float health = -1f;
         [SerializeField] TakeDamageEvent takeDamage;
         [SerializeField] TakeDamageEvent updateBar;
+        [SerializeField] UnityEvent onDie;
         bool isDead = false;
         BaseStats stats;
         [System.Serializable]
@@ -24,15 +25,18 @@ namespace RPG.Core{
             print(gameObject.name + " D "+ damage);
             health = Mathf.Max(health-damage,0);
             float percent = GetPercentage()/100f;
-            takeDamage.Invoke(damage);
-            updateBar.Invoke(percent);
             if(health<=0)
             {
                 if(instigator.GetComponent<Expierence>()){
                     instigator.GetComponent<Expierence>().GainExpierence(stats.GetStat(Stat.ExpierenceReward));
                 }
+                onDie.Invoke();
                 Die();
             }
+            else{
+                takeDamage.Invoke(damage);
+            }
+            updateBar.Invoke(percent);
             print("HP: "+health);
         }
 

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using RPG.Saving;
 using UnityEngine.AI;
+using RPG.Control;
 
 namespace RPG.SceneManagement{
 public class Portal : MonoBehaviour
@@ -34,10 +35,14 @@ public class Portal : MonoBehaviour
         print("Player IN");
         DontDestroyOnLoad(this.gameObject);
         Fader fader = FindObjectOfType<Fader>();
+        PlayerController player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        player.enabled = false;
         yield return fader.FadeOut(1);
         SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
         savingWrapper.Save();
         yield return SceneManager.LoadSceneAsync(sceneToLoad);
+        PlayerController newPlayer = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        newPlayer.enabled = false;
         print("Scene Loaded");
         savingWrapper.Load();
         Portal otherPortal = GetOtherPortal();
@@ -45,6 +50,8 @@ public class Portal : MonoBehaviour
         savingWrapper.Save();
         yield return new WaitForSeconds(0.5f);
         yield return fader.FadeIn(1);  
+        newPlayer.enabled = true;
+
         Destroy(this.gameObject);
     }
 

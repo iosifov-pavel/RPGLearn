@@ -1,5 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!81 &2960461288562208429
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2179944434579491523}
+  m_Enabled: 1
 --- !u!1 &7662511798345758406
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +18,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7662511798345758405}
   - component: {fileID: 7662511798345758394}
-  - component: {fileID: 7662511798345758395}
   - component: {fileID: 7662511798345758404}
   m_Layer: 0
   m_Name: Camera
@@ -27,7 +34,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7662511798345758406}
   m_LocalRotation: {x: -0.21909773, y: -0.7770433, z: 0.37105116, w: -0.4588257}
-  m_LocalPosition: {x: -37.82646, y: 32.290825, z: 37.89496}
+  m_LocalPosition: {x: -30.827888, y: 32.290825, z: 43.61325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7662511799230696792}
@@ -76,14 +83,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7662511798345758395
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7662511798345758406}
-  m_Enabled: 1
 --- !u!114 &7662511798345758404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,6 +677,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47203ded69e90ee4f967b1fbd0532376, type: 3}
+--- !u!1 &2179944434579491523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8364875607766541323, guid: 47203ded69e90ee4f967b1fbd0532376,
+    type: 3}
+  m_PrefabInstance: {fileID: 7662511798325767880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2179944434579491527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8364875607766541327, guid: 47203ded69e90ee4f967b1fbd0532376,

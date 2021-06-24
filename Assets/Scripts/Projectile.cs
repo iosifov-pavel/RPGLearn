@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] bool isHoming = false;
     [SerializeField] float lifeTime = 4f;
     [SerializeField] GameObject hitEffect = null;
+    [SerializeField] UnityEvent onHit;
     Health target = null;
     GameObject instigator = null;
     float damage =0;
@@ -50,11 +52,12 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject==target.gameObject && !target.IsDead()){
+            onHit.Invoke();
             target.TakeDamage(instigator, damage);
             if(hitEffect!=null){
                 GameObject effect = Instantiate(hitEffect, GetAimLocation(), transform.rotation);
             }
-            Destroy(gameObject);
+            Destroy(gameObject,1f);
         }
     }
 
