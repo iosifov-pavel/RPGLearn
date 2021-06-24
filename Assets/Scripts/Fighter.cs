@@ -18,12 +18,11 @@ namespace RPG.Combat{
         float timeFromLastAttack = Mathf.Infinity;
 
         private void Awake() {
-            
+            if(currentWeapon!=null) return;
+            EquipWeapon(defaultWeapon);
         }
 
         private void Start() {
-            if(currentWeapon!=null) return;
-            EquipWeapon(defaultWeapon);
         }
         private void Update() {
             timeFromLastAttack+=Time.deltaTime;
