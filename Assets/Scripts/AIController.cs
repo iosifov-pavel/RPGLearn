@@ -18,14 +18,18 @@ public class AIController : MonoBehaviour
     Vector3 guardPosition;
     float timeSinseLastSawPlayer = Mathf.Infinity;
     float timeAtPoint = Mathf.Infinity;
+    float timeSinseAggro = Mathf.Infinity;
     [SerializeField] float timeWaitAtPoint = 1.5f;
     [SerializeField] float suspiciousTime = 2f;
+    [SerializeField] float aggroTime =5f;
     [SerializeField] PatrolPath path = null;
     [SerializeField] float wayPointTolerance = 1f;
     [Range(0,1f)] [SerializeField] float patrolSpeedMultiplier = 0.2f;
     int currentPointNumber = 0;
-// Start is called before the first frame update
-    private void Awake() {
+    [SerializeField] float agroradius = 5;
+
+        // Start is called before the first frame update
+        private void Awake() {
         fighter = GetComponent<Fighter>();
         mover = GetComponent<Mover>();
         player = GameObject.FindWithTag("Player");
@@ -44,6 +48,7 @@ public class AIController : MonoBehaviour
             print(gameObject.name + "Start chasing");
             timeSinseLastSawPlayer = 0;
             fighter.Attack(player);
+            AggroFriends();
         }
         else if(timeSinseLastSawPlayer<=suspiciousTime){
             GetComponent<Scheduler>().CancelCurrentAction();
@@ -64,28 +69,42 @@ public class AIController : MonoBehaviour
         }
         timeSinseLastSawPlayer += Time.deltaTime;
         timeAtPoint += Time.deltaTime;
+        timeSinseAggro +=Time.deltaTime;
     }
 
-        private Vector3 GetCurrentWayPoint()
+        private void AggroFriends()
         {
-            return path.GetWayPoint(currentPointNumber);
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, agroradius, Vector3.up, 0);
+            foreach(RaycastHit hit in hits){
+                AIController enemy = hit.transform.GetComponent<AIController>();
+                if(enemy){
+                    enemy.Aggro();
+                }
+            }
         }
 
-        private void ToNextPoint()
-        {
-            currentPointNumber = path.GetNextWayPoint(currentPointNumber);
-        }
+        public void Aggro(){
+        timeSinseAggro = 0f;
+    }
 
-        private bool AtWaypoint()
-        {
-            float distanceToPoint = Vector3.Distance(transform.position,GetCurrentWayPoint());
-            return distanceToPoint<= wayPointTolerance;
-        }
-
-        private bool DistanceToPlayer(GameObject player)
+    private Vector3 GetCurrentWayPoint()
+    {
+        return path.GetWayPoint(currentPointNumber);
+    }
+    private void ToNextPoint()
+    {
+        currentPointNumber = path.GetNextWayPoint(currentPointNumber);
+    }
+    private bool AtWaypoint()
+    {
+        float distanceToPoint = Vector3.Distance(transform.position,GetCurrentWayPoint());
+        return distanceToPoint<= wayPointTolerance;
+    }
+    private bool DistanceToPlayer(GameObject player)
     {
             bool v = Vector3.Distance(player.transform.position, transform.position) <= chaseDistance;
-            return v;
+            bool w = timeSinseAggro < aggroTime;
+            return v||w;
     }
 
     private void OnDrawGizmos() {

@@ -32,8 +32,7 @@ namespace RPG.Combat{
                     return;
                 } 
                 LookAtEnemy();
-                float range = (target.transform.position-transform.position).magnitude;
-                if(range<=currentWeapon.WeaponRange)
+                if(InRange(target.transform))
                 {
                     GetComponent<Mover>().Cancel();
                     if(timeFromLastAttack>=timeBetweenAttacks){
@@ -46,8 +45,14 @@ namespace RPG.Combat{
             }
         }
 
+        bool InRange(Transform target){
+            float range = (target.transform.position-transform.position).magnitude;
+            return range<=currentWeapon.WeaponRange;
+        }
+
         public bool CanAttack(GameObject target){
             if(target.GetComponent<Health>().IsDead() || target==null) return false;
+            if(!GetComponent<Mover>().CanMoveTo(target.transform.position) && !InRange(target.transform)) return false;
             else return true;
         }
 

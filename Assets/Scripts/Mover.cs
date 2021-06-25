@@ -42,6 +42,25 @@ public class Mover : MonoBehaviour, IAction, ISaveable
         MoveTo(destination, speedMultiplier);
     }
 
+    public bool CanMoveTo(Vector3 destination){
+            NavMeshPath path = new NavMeshPath();
+            bool hasPath = NavMesh.CalculatePath(transform.position, destination, NavMesh.AllAreas, path);
+            if(!hasPath) return false;
+            if(path.status != NavMeshPathStatus.PathComplete) return false;
+            if(GetPathLength(path)>40f) return false;
+            return true;
+    }
+
+    private float GetPathLength(NavMeshPath path)
+    {
+        float result = 0;
+        if(path.corners.Length<2) return result;
+        for(int i =0;i<path.corners.Length-1;i++){
+            result += Vector3.Distance(path.corners[i+1],path.corners[i]);
+        }
+        return result;
+    }
+
     public void MoveTo(Vector3 destination, float speedMultiplier)
     {
         nav.SetDestination(destination);

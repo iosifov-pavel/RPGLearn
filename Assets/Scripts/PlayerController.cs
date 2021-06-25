@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
             bool hasHit = RaycastNavMesh(out target);
             if (hasHit)
             {
+                if(!GetComponent<Mover>().CanMoveTo(target)) return false;
                 if(Input.GetMouseButton(0)){
                     GetComponent<Mover>().StartMoveAction(target, 1f);
                 }
@@ -117,23 +118,11 @@ public class PlayerController : MonoBehaviour
             bool hasToNavMesh = NavMesh.SamplePosition(hit.point, out navMeshHit, 1f, NavMesh.AllAreas);
             if(!hasToNavMesh) return false;
             target = navMeshHit.position;
-            NavMeshPath path = new NavMeshPath();
-            bool hasPath = NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, path);
-            if(!hasPath) return false;
-            if(path.status != NavMeshPathStatus.PathComplete) return false;
-            if(GetPathLength(path)>40f) return false;
+
             return true;
         }
 
-        private float GetPathLength(NavMeshPath path)
-        {
-            float result = 0;
-            if(path.corners.Length<2) return result;
-            for(int i =0;i<path.corners.Length-1;i++){
-                result += Vector3.Distance(path.corners[i+1],path.corners[i]);
-            }
-            return result;
-        }
+
 
         private static Ray GetRay()
         {

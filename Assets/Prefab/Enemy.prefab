@@ -280,6 +280,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8015540367890335018, guid: 2e752ed98069c4b4aafa7fe416068e5d,
         type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015540367890335018, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
       propertyPath: updateBar.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 0
       objectReference: {fileID: 0}
@@ -301,6 +306,31 @@ PrefabInstance:
     - target: {fileID: 8015540367890335018, guid: 2e752ed98069c4b4aafa7fe416068e5d,
         type: 3}
       propertyPath: updateBar.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015540367890335018, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015540367890335018, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015540367890335018, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2143753670522117896}
+    - target: {fileID: 8015540367890335018, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: Aggro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015540367890335018, guid: 2e752ed98069c4b4aafa7fe416068e5d,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8739311342176529660, guid: 2e752ed98069c4b4aafa7fe416068e5d,
