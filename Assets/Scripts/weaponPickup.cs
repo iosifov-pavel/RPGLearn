@@ -7,7 +7,7 @@ using UnityEngine;
 public class weaponPickup : MonoBehaviour, IRaycastable
 {
     // Start is called before the first frame update
-    [SerializeField] Weapon weaponPickUp = null;
+    [SerializeField] WeaponConfig weaponPickUp = null;
     [SerializeField] float respawnTime = 4f;
     void Start()
     {
