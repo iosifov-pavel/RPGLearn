@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Saving;
-
+using GameDevTV.Saving;
 namespace RPG.SceneManagement{
     public class SavingWrapper : MonoBehaviour
     {
@@ -43,6 +42,7 @@ namespace RPG.SceneManagement{
 
         public void Load()
         {
+            //StartCoroutine(savingSystem.LoadLastScene(defaultSaveFile));
             savingSystem.Load(defaultSaveFile);
         }
 

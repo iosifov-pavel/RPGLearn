@@ -1,7 +1,7 @@
 using UnityEngine;
 using RPG.Core;
 using RPG.Movement;
-using RPG.Saving;
+using GameDevTV.Saving;
 using RPG.Stats;
 using System.Collections.Generic;
 
@@ -111,13 +111,18 @@ namespace RPG.Combat{
         public Weapon EquipWeapon(WeaponConfig weapon){
             Animator animator = GetComponent<Animator>();
             currentWeaponConfig = weapon;
+            if(gameObject.tag=="Player"){
+                float a =1;
+                a++;
+                print(a);
+            }
             currentWeapon = weapon.Spawn(rightHandTransform, leftHandTransform, animator);
             return currentWeapon;
         }
 
         public object CaptureState()
         {
-            return currentWeapon.name;
+            return currentWeaponConfig.name;
         }
 
         public void RestoreState(object state)
