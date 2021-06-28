@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using GameDevTV.Saving;
+using UnityEngine.SceneManagement;
 
 namespace GameDevTV.Inventories
 {
@@ -12,7 +13,7 @@ namespace GameDevTV.Inventories
     {
         // STATE
         private List<Pickup> droppedItems = new List<Pickup>();
-
+        private List<DropRecord> otherSceneDroppedItems = new List<DropRecord>();
         // PUBLIC
 
         /// <summary>
@@ -62,26 +63,37 @@ namespace GameDevTV.Inventories
             public string itemID;
             public SerializableVector3 position;
             public int number;
+            public int sceneNumber;
         }
 
         object ISaveable.CaptureState()
         {
             RemoveDestroyedDrops();
-            var droppedItemsList = new DropRecord[droppedItems.Count];
-            for (int i = 0; i < droppedItemsList.Length; i++)
+            var droppedItemsList = new List<DropRecord>();
+            int buildIndex = SceneManager.GetActiveScene().buildIndex;
+            foreach(Pickup pickup in droppedItems)
             {
-                droppedItemsList[i].itemID = droppedItems[i].GetItem().GetItemID();
-                droppedItemsList[i].position = new SerializableVector3(droppedItems[i].transform.position);
-                droppedItemsList[i].number = droppedItems[i].GetNumber();
+                var dropItem = new DropRecord();
+                dropItem.itemID = pickup.GetItem().GetItemID();
+                dropItem.position = new SerializableVector3(pickup.transform.position);
+                dropItem.number = pickup.GetNumber();
+                dropItem.sceneNumber = buildIndex;
+                droppedItemsList.Add(dropItem);
             }
+            droppedItemsList.AddRange(otherSceneDroppedItems);
             return droppedItemsList;
         }
 
         void ISaveable.RestoreState(object state)
         {
             var droppedItemsList = (DropRecord[])state;
+            otherSceneDroppedItems.Clear();
             foreach (var item in droppedItemsList)
             {
+                if(item.sceneNumber!=SceneManager.GetActiveScene().buildIndex){
+                    otherSceneDroppedItems.Add(item);
+                    continue;
+                }
                 var pickupItem = InventoryItem.GetFromID(item.itemID);
                 Vector3 position = item.position.ToVector();
                 int number = item.number;

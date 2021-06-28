@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6b1f6e420bbd1468aafec4efa5fb92, type: 3}
   m_Name: Unarmed
   m_EditorClassIdentifier: 
+  itemID: ddac028a-8a5f-48c0-8227-f52d3d81e43a
+  displayName: Fists
+  description: Do Some Fisting
+  icon: {fileID: 21300000, guid: 886ffb608498aa04c9c0913d5ac3c394, type: 3}
+  pickup: {fileID: 1324538328693785685, guid: 9dcaaa1593397274fa9197347b0f6175, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 0}
   weaponPrefab: {fileID: 6373071850722517291, guid: 67030461975f91143a4e5f848a01ea8e,
     type: 3}

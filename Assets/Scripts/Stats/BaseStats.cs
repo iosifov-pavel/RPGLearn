@@ -37,7 +37,12 @@ public class BaseStats : MonoBehaviour
 
     public float GetStat(Stat stat)
     {
-        return (GetBaseStat(stat) + GetAdditiveModifier(stat)) * (1f + GetPercentModifier(stat)/100f);
+        float a = GetBaseStat(stat);
+        float b = GetAdditiveModifier(stat);
+        float c = a+b;
+        float p = 1f + GetPercentModifier(stat) / 100f;
+        float res = c*p;
+        return res;
     }
 
     private float GetPercentModifier(Stat stat)

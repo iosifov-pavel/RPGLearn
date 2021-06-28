@@ -4,9 +4,11 @@ using RPG.Movement;
 using GameDevTV.Saving;
 using RPG.Stats;
 using System.Collections.Generic;
+using GameDevTV.Inventories;
+using System;
 
 namespace RPG.Combat{
-    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
@@ -16,11 +18,27 @@ namespace RPG.Combat{
         Weapon currentWeapon = null;
 
         Health target=null;
+        Equipment equipment;
         float timeFromLastAttack = Mathf.Infinity;
 
         private void Awake() {
             currentWeaponConfig = defaultWeapon;
             currentWeapon = EquipWeapon(defaultWeapon);
+            equipment = GetComponent<Equipment>();
+            if(equipment){
+                equipment.equipmentUpdated += UpdateWeapon;
+            }
+        }
+
+        private void UpdateWeapon()
+        {
+            var weapon = equipment.GetItemInSlot(EquipLocation.Weapon) as WeaponConfig;
+            if(weapon==null){
+                EquipWeapon(defaultWeapon);
+            }
+            else{
+                EquipWeapon(weapon);
+            }
         }
 
         private void Start() {
@@ -94,7 +112,7 @@ namespace RPG.Combat{
             if(currentWeapon!=null){
                 currentWeapon.OnHit();
             }
-            target.TakeDamage(gameObject, GetComponent<BaseStats>().GetStat(Stat.Damage));
+            target.TakeDamage(gameObject, GetComponent<BaseStats>().GetStat(Stat.Damage)+currentWeaponConfig.Damage);
         }
 
         void Shoot(){
@@ -104,7 +122,7 @@ namespace RPG.Combat{
                 currentWeapon.OnHit();
             }
             if(currentWeaponConfig.HasProjectile()){
-                currentWeaponConfig.LaunchProjectile(rightHandTransform,leftHandTransform,target, gameObject,GetComponent<BaseStats>().GetStat(Stat.Damage));
+                currentWeaponConfig.LaunchProjectile(rightHandTransform,leftHandTransform,target, gameObject,GetComponent<BaseStats>().GetStat(Stat.Damage)+ currentWeaponConfig.Damage);
             }
         }
 
@@ -130,20 +148,6 @@ namespace RPG.Combat{
             string weaponName = (string)state;
             WeaponConfig weapon = Resources.Load<WeaponConfig>(weaponName);
             EquipWeapon(weapon);
-        }
-
-        public IEnumerable<float> GetAditiveModifier(Stat stat)
-        {
-            if(stat == Stat.Damage){
-                yield return currentWeaponConfig.Damage;
-            }
-        }
-
-        public IEnumerable<float> GetPercentModifier(Stat stat)
-        {
-            if(stat == Stat.Damage){
-                yield return currentWeaponConfig.GetPercentBonus();
-            }
         }
     }
 }

@@ -24,7 +24,9 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] CursorMaping[] cursorsMap = null;
-        private void Awake()
+    private bool isDraggingUI=false;
+
+    private void Awake()
     {
         health = GetComponent<Health>();
     }
@@ -35,7 +37,6 @@ public class PlayerController : MonoBehaviour
     void Update()
         {
             if(InteractWithUI()){
-                SetCursor(Cursors.UI);
                 return;
             }
             if(health.IsDead()){
@@ -74,7 +75,20 @@ public class PlayerController : MonoBehaviour
 
         private bool InteractWithUI()
         {
-            return EventSystem.current.IsPointerOverGameObject();
+            if(Input.GetMouseButtonDown(0)){
+                isDraggingUI = false;
+            }
+            if(EventSystem.current.IsPointerOverGameObject()){
+                if(Input.GetMouseButtonDown(0)){
+                    isDraggingUI = true;
+                }
+                SetCursor(Cursors.UI);
+                return true;
+            }
+            if(isDraggingUI){
+                return true;
+            }
+            return false;
         }
 
 

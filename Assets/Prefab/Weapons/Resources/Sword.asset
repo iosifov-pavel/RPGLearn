@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6b1f6e420bbd1468aafec4efa5fb92, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  itemID: fe8c0a2c-a696-4a77-88da-e29557581f14
+  displayName: Iron Sword
+  description: Nice and Sharp
+  icon: {fileID: 21300000, guid: d19901b0ee3c38743a7d383bd484b0b5, type: 3}
+  pickup: {fileID: 1324538328693785685, guid: 9dcaaa1593397274fa9197347b0f6175, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: e3a07ab2f74cf8d48874161390a65fe3, type: 2}
   weaponPrefab: {fileID: 7561043590936146518, guid: 4dac32cdb8ffa4c44a33e66f77f32b10,
     type: 3}
