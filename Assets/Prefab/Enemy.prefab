@@ -59,7 +59,7 @@ MonoBehaviour:
   path: {fileID: 0}
   wayPointTolerance: 1
   patrolSpeedMultiplier: 0.2
-  agroradius: 5
+  agroradius: 6
 --- !u!114 &3101353046864586744
 MonoBehaviour:
   m_ObjectHideFlags: 0
