@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65b4c48d50300814a871ea5481bc8573, type: 3}
-  m_Name: Dialogue
+  m_Script: {fileID: 11500000, guid: 1bb663de6eee3904cad71153a90d290a, type: 3}
+  m_Name: Quest
   m_EditorClassIdentifier: 
-  nodes:
-  - ID: 85de7883-c150-4474-b85b-671437e00006
-    text: 
-    childrens: []
-    rect:
-      serializedVersion: 2
-      x: 50
-      y: 50
-      width: 150
-      height: 200
+  tasks:
+  - Talk
+  - Kill
+  - Talk again
+  - Kill again
+  - End quest
