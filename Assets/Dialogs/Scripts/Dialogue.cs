@@ -1,20 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Dialogue", menuName = "RPGLearn/Dialogue", order = 0)]
-public class Dialogue : ScriptableObject {
+public class Dialogue : ScriptableObject, ISerializationCallbackReceiver {
     [SerializeField] List<DialogueNode> nodes = new List<DialogueNode>();
     Dictionary<string, DialogueNode> nodesDict = new Dictionary<string, DialogueNode>();
 
 #if UNITY_EDITOR
     private void Awake() {
-        if(nodes.Count==0){
-            DialogueNode rootNode = new DialogueNode();
-            nodes.Add(rootNode);
-        }
-        OnValidate();
     }
 
     public DialogueNode GetRootNode(){
@@ -24,7 +20,7 @@ public class Dialogue : ScriptableObject {
     private void OnValidate() {
         nodesDict.Clear();
         foreach(DialogueNode node in nodes){
-            nodesDict[node.ID] = node;
+            nodesDict[node.name] = node;
         }
     }
 #endif
@@ -34,9 +30,9 @@ public class Dialogue : ScriptableObject {
 
     public IEnumerable<DialogueNode> GetAllChildren(DialogueNode parentNode)
     {
-        if(parentNode.childrens.Count==0) return null;
+        if(parentNode.GetChildrens().Count==0) return null;
         List<DialogueNode> childrens = new List<DialogueNode>();
-        foreach(string nodeID in parentNode.childrens){
+        foreach(string nodeID in parentNode.GetChildrens()){
             if(!nodesDict.ContainsKey(nodeID)) continue;
             childrens.Add(nodesDict[nodeID]);
         }
@@ -46,21 +42,50 @@ public class Dialogue : ScriptableObject {
 
     public void CreateChildNode(DialogueNode parent)
     {
-        DialogueNode newNode = new DialogueNode(parent);
+        DialogueNode newNode = CreateInstance<DialogueNode>();
+        if(parent!=null){
+            Undo.RegisterCreatedObjectUndo(newNode,"Created Dialogue Node");
+            Undo.RecordObject(this, "Added node to dialog");
+        } 
         nodes.Add(newNode);
-        parent.childrens.Add(newNode.ID);
+        if(parent!=null){
+            if(parent.IsPlayer()) newNode.SetSpeakerAsPlayer(false);
+            else newNode.SetSpeakerAsPlayer(true);
+            newNode.ParentPosition(parent);
+            parent.AddChild(newNode.name);
+        }
         OnValidate();
     }
 
     public void DeleteNode(DialogueNode node){
+        Undo.RecordObject(this, "Deleting Dialog Node");
         nodes.Remove(node);
         OnValidate();
         foreach(DialogueNode nodeC in nodes){
-            nodeC.childrens.Remove(node.ID);
+            nodeC.DeleteChild(node.name);
+        }
+        Undo.DestroyObjectImmediate(node);
+    }
+
+    public void OnBeforeSerialize()
+    {
+        if(nodes.Count==0){
+            CreateChildNode(null);
+        }
+        OnValidate();
+        if(AssetDatabase.GetAssetPath(this) != "")
+        {
+            foreach (DialogueNode item in GetAllNodes())
+            {
+                if(AssetDatabase.GetAssetPath(item) == ""){
+                    AssetDatabase.AddObjectToAsset(item, this);
+                }
+            }
         }
     }
 
-    public void LinkNodes(){
-
+    public void OnAfterDeserialize()
+    {
+        
     }
 }

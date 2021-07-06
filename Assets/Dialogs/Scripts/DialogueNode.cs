@@ -1,29 +1,75 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-[System.Serializable]
-public class DialogueNode
+public class DialogueNode : ScriptableObject
 {
-    public string ID;
-    public string text;
-    public List<string> childrens = new List<string>();
-    public Rect rect;
+    [SerializeField] bool isPlayerSpeaking = false;
+    [SerializeField] private string text;
+    [SerializeField] private List<string> childrens = new List<string>();
+    [SerializeField] private Rect rect;
 
     public DialogueNode(){
-        ID = System.Guid.NewGuid().ToString();
         rect = new Rect();
         rect.width = 150;
         rect.height = 200;
         rect.position = new Vector2(50,50);
     }
 
-    public DialogueNode(DialogueNode parent){
-        ID = System.Guid.NewGuid().ToString();
-        rect = new Rect();
-        rect.width = 150;
-        rect.height = 200;
+    public void ParentPosition(DialogueNode parent){
         Vector2 offset = new Vector2(parent.rect.width/2, parent.rect.height/2);
         rect.position = parent.rect.position + offset;
     }
+
+    private void OnEnable() {
+        this.name = System.Guid.NewGuid().ToString();
+    }
+
+    public Rect GetRect(){
+        return rect;
+    }
+    public string GetText(){
+        return text;
+    }
+
+    public bool IsPlayer(){
+        return isPlayerSpeaking;
+    }
+
+    public void SetSpeakerAsPlayer(bool speaker){
+        isPlayerSpeaking = speaker;
+        EditorUtility.SetDirty(this);
+    }
+
+    public List<string> GetChildrens(){
+        return childrens;
+    }
+
+    public void SetRectPosition(Vector2 position){
+        Undo.RecordObject(this, "Update node position");
+        rect.position = position;
+        EditorUtility.SetDirty(this);
+    }
+
+    public void SetText(string newText){
+        if(newText!=text){
+            Undo.RecordObject(this, "Update dialog text");
+            text = newText;
+            EditorUtility.SetDirty(this);
+        }
+    }
+
+    public void AddChild(string childID){
+        Undo.RecordObject(this, "Linking");
+        childrens.Add(childID);
+        EditorUtility.SetDirty(this);
+    }
+
+    public void DeleteChild(string childID){
+        Undo.RecordObject(this, "Linking");
+        childrens.Remove(childID);
+        EditorUtility.SetDirty(this);
+    }
+
 }
