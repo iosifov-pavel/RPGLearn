@@ -23,20 +23,28 @@ public class DialogUI : MonoBehaviour
     // Update is called once per frame
     void UpdateUI()
     {
-        playerAnswerPanel.SetActive(player.IsPlayerSpeak());
+        playerAnswerPanel.SetActive(player.HasAnswers());
         AIText.text = player.GetText();
-        nextButton.gameObject.SetActive(player.HasNext() && !player.IsPlayerSpeak());
-        if(player.IsPlayerSpeak()){
-            foreach (Transform item in choicesRoot)
-            {
-                Destroy(item.gameObject);
-            }
+        nextButton.gameObject.SetActive(player.HasNext() && !player.HasAnswers());
+        foreach (Transform item in choicesRoot)
+        {
+            Destroy(item.gameObject);
+        }
+        if(player.HasAnswers()){
             foreach(DialogueNode choiseNode in player.GetChoices()){
                 GameObject newButton = Instantiate(answerPrefab,choicesRoot);
                 Text newText = newButton.transform.GetChild(0).GetComponent<Text>();
                 newText.text = choiseNode.GetText();
-                newButton.GetComponent<Button>().onClick.AddListener(delegate{NextForAnswer(choiseNode);});
+                newButton.GetComponent<Button>().onClick.AddListener(delegate(){NextForAnswer(choiseNode);});
             }
+        }
+        else if(!player.HasNext())
+        {
+            playerAnswerPanel.SetActive(true);
+            GameObject newButton = Instantiate(answerPrefab, choicesRoot);
+            Text newText = newButton.transform.GetChild(0).GetComponent<Text>();
+            newText.text = "End of a Dialog";
+            newButton.GetComponent<Button>().onClick.AddListener(Close);
         }
     }
 
@@ -50,5 +58,7 @@ public class DialogUI : MonoBehaviour
         UpdateUI();
     }
 
-    
+    public void Close(){
+        player.CloseDialogue();
+    }    
 }

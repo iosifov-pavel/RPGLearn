@@ -39,8 +39,8 @@ MonoBehaviour:
   childrens: []
   rect:
     serializedVersion: 2
-    x: 760
-    y: 574
+    x: 872
+    y: 547
     width: 150
     height: 150
 --- !u!114 &-8942518097352407812
@@ -100,13 +100,13 @@ MonoBehaviour:
   m_Name: 963f2fcc-e398-49ab-8b55-e4187bbc620e
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
-  text: Sorry, Can you repeat?
+  text: Sorry, Can you repeat who you are?
   childrens:
   - b5910850-438c-49c1-bf8b-f63b13993991
   rect:
     serializedVersion: 2
-    x: 421
-    y: 650
+    x: 552
+    y: 948
     width: 150
     height: 150
 --- !u!114 &-8062420228560704842
@@ -127,8 +127,8 @@ MonoBehaviour:
   - b306dfff-c201-4c33-8ece-765c0a92c019
   rect:
     serializedVersion: 2
-    x: 621
-    y: 4
+    x: 624
+    y: 30
     width: 150
     height: 150
 --- !u!114 &-7506456829383560828
@@ -172,8 +172,8 @@ MonoBehaviour:
   - 2241b650-11af-45b4-b452-0f1923cff5bf
   rect:
     serializedVersion: 2
-    x: 589
-    y: 525
+    x: 666
+    y: 523
     width: 150
     height: 150
 --- !u!114 &-7355189402056280112
@@ -212,8 +212,8 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: I am a guard of Ghost Town
   childrens:
-  - 963f2fcc-e398-49ab-8b55-e4187bbc620e
   - 3e756b23-444c-4b3f-b7f9-b9a1c93efe92
+  - 3fcf9017-bc6d-46e9-9968-6b254f6c4a72
   rect:
     serializedVersion: 2
     x: 425
@@ -240,6 +240,51 @@ MonoBehaviour:
     serializedVersion: 2
     x: 258
     y: 115
+    width: 150
+    height: 150
+--- !u!114 &-5133639694249729909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 316c1532-41db-4af3-b22a-da3ca471578f
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Maybe later
+  childrens: []
+  rect:
+    serializedVersion: 2
+    x: 986
+    y: 735
+    width: 150
+    height: 150
+--- !u!114 &-3391753218627890588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: e9c10c1e-e845-4c05-bd6a-dbecc305ff76
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: What did you that?
+  childrens:
+  - c504929a-80fe-4f3f-be3b-b9b27c9ab514
+  - 87bcb662-66c4-47bc-b045-a632a98b8d7b
+  - 553e39c7-4000-49d4-b608-8e064029742c
+  rect:
+    serializedVersion: 2
+    x: 86
+    y: 127
     width: 150
     height: 150
 --- !u!114 &-3360127432098056406
@@ -278,13 +323,33 @@ MonoBehaviour:
   isPlayerSpeaking: 0
   text: Hello there, traveler
   childrens:
-  - c504929a-80fe-4f3f-be3b-b9b27c9ab514
-  - 87bcb662-66c4-47bc-b045-a632a98b8d7b
-  - 553e39c7-4000-49d4-b608-8e064029742c
+  - e9c10c1e-e845-4c05-bd6a-dbecc305ff76
   rect:
     serializedVersion: 2
-    x: 22
-    y: 286
+    x: 1
+    y: 326
+    width: 150
+    height: 150
+--- !u!114 &-2656237192677126198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 3fcf9017-bc6d-46e9-9968-6b254f6c4a72
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Sounds interesting
+  childrens:
+  - b6841b5a-0dec-4710-a227-a8627ac20501
+  rect:
+    serializedVersion: 2
+    x: 582
+    y: 679
     width: 150
     height: 150
 --- !u!114 &11400000
@@ -315,6 +380,10 @@ MonoBehaviour:
   - {fileID: -8315576271997404359}
   - {fileID: -7492060180880124041}
   - {fileID: -9035571034884129916}
+  - {fileID: -3391753218627890588}
+  - {fileID: -2656237192677126198}
+  - {fileID: 6783239237118756707}
+  - {fileID: -5133639694249729909}
 --- !u!114 &2473444696506117643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +404,29 @@ MonoBehaviour:
     serializedVersion: 2
     x: 255
     y: 261
+    width: 150
+    height: 150
+--- !u!114 &6783239237118756707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: b6841b5a-0dec-4710-a227-a8627ac20501
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Yes? it does. I can tell you some stories about this town
+  childrens:
+  - 963f2fcc-e398-49ab-8b55-e4187bbc620e
+  - 316c1532-41db-4af3-b22a-da3ca471578f
+  rect:
+    serializedVersion: 2
+    x: 786
+    y: 755
     width: 150
     height: 150
 --- !u!114 &7500895560530192640

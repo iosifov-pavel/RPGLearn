@@ -32,42 +32,20 @@ public class PlayerSpeaker : MonoBehaviour
 
     public void Next(){
         if(HasNext()){
+            if(currentNode.GetChildrens().Count==0) return;
             int maxR = currentNode.GetChildrens().Count;
             int index = Random.Range(0,maxR);
             DialogueNode[] answerNodes = currentDialogue.GetAllChildren(currentNode).ToArray();
-            hasPlayerAnswers = false;
-            foreach(DialogueNode node in answerNodes){
-                if(node.IsPlayer()){
-                    hasPlayerAnswers = true;
-                }
-            }
-            if(!hasPlayerAnswers){
-                currentNode = answerNodes[index];
-            }
-            else{
-                SetAnswers(answerNodes);
-            }
+            currentNode = answerNodes[index];
         }
     }
 
     public void NextForCurrentNode(DialogueNode node){
+        if(node.GetChildrens().Count==0){ 
+            CloseDialogue();
+            return;
+        }
         currentNode = currentDialogue.GetAllChildren(node).ToArray()[0];
-        if(currentNode.GetChildrens().Count==0) return;
-        int maxR = currentNode.GetChildrens().Count;
-        int index = Random.Range(0,maxR);
-        DialogueNode[] answerNodes = currentDialogue.GetAllChildren(currentNode).ToArray();
-        hasPlayerAnswers = false;
-        foreach(DialogueNode nodes in answerNodes){
-            if(node.IsPlayer()){
-                hasPlayerAnswers = true;
-            }
-        }
-        if(!hasPlayerAnswers){
-            currentNode = answerNodes[index];
-        }
-        else{
-            SetAnswers(answerNodes);
-        }
     }
 
     public bool HasNext(){
@@ -81,15 +59,25 @@ public class PlayerSpeaker : MonoBehaviour
         return answers;
     }
 
-    private void SetAnswers(DialogueNode[] nodes){
+    public void SetAnswers()
+    {
         answers.Clear();
-        foreach(DialogueNode node in nodes){
+        DialogueNode[] answerNodes = currentDialogue.GetAllChildren(currentNode).ToArray();
+        foreach (DialogueNode node in answerNodes)
+        {
             answers.Add(node);
         }
     }
 
-    public bool IsPlayerSpeak(){
-        return hasPlayerAnswers;
+    public void CloseDialogue(){
+        Debug.Log("End of a Dialog");
     }
 
+    public bool HasAnswers(){
+        int num = currentNode.GetChildrens().Count;
+        if (num ==0) return false;
+        if(!currentDialogue.GetAllChildren(currentNode).ToArray()[0].IsPlayer()) return false;
+        SetAnswers();
+        return true;
+    }
 }
