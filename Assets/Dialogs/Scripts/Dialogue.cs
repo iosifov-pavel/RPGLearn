@@ -13,9 +13,6 @@ public class Dialogue : ScriptableObject, ISerializationCallbackReceiver {
     private void Awake() {
     }
 
-    public DialogueNode GetRootNode(){
-        return nodes[0];
-    }
 
     private void OnValidate() {
         nodesDict.Clear();
@@ -24,6 +21,10 @@ public class Dialogue : ScriptableObject, ISerializationCallbackReceiver {
         }
     }
 #endif
+
+    public DialogueNode GetRootNode(){
+        return nodes[0];
+    }
     public IEnumerable<DialogueNode> GetAllNodes(){
         return nodes;
     }
@@ -43,6 +44,8 @@ public class Dialogue : ScriptableObject, ISerializationCallbackReceiver {
     public void CreateChildNode(DialogueNode parent)
     {
         DialogueNode newNode = CreateInstance<DialogueNode>();
+        newNode.SetRect();
+        newNode.SetGUID();
         if(parent!=null){
             Undo.RegisterCreatedObjectUndo(newNode,"Created Dialogue Node");
             Undo.RecordObject(this, "Added node to dialog");

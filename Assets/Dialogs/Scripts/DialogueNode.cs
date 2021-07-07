@@ -8,22 +8,21 @@ public class DialogueNode : ScriptableObject
     [SerializeField] bool isPlayerSpeaking = false;
     [SerializeField] private string text;
     [SerializeField] private List<string> childrens = new List<string>();
-    [SerializeField] private Rect rect;
+    [SerializeField] private Rect rect = new Rect();
 
-    public DialogueNode(){
-        rect = new Rect();
+    public void SetGUID(){
+        this.name = System.Guid.NewGuid().ToString();
+    }
+
+    public void SetRect(){
         rect.width = 150;
-        rect.height = 200;
+        rect.height = 150;
         rect.position = new Vector2(50,50);
     }
 
     public void ParentPosition(DialogueNode parent){
         Vector2 offset = new Vector2(parent.rect.width/2, parent.rect.height/2);
         rect.position = parent.rect.position + offset;
-    }
-
-    private void OnEnable() {
-        this.name = System.Guid.NewGuid().ToString();
     }
 
     public Rect GetRect(){

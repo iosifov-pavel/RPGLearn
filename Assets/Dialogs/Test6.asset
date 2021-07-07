@@ -1,0 +1,361 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9197272173453900495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: a72efef2-1602-483f-a4c6-37f6afde48cb
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: what is your name
+  childrens:
+  - 039c8238-1405-4424-9ae7-cdcf2c4a3b22
+  rect:
+    serializedVersion: 2
+    x: 466
+    y: 35
+    width: 150
+    height: 150
+--- !u!114 &-9035571034884129916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 2241b650-11af-45b4-b452-0f1923cff5bf
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: I agreed
+  childrens: []
+  rect:
+    serializedVersion: 2
+    x: 760
+    y: 574
+    width: 150
+    height: 150
+--- !u!114 &-8942518097352407812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: db74f5b4-01b4-455a-a1f2-8b6cddfdc371
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Nevermind
+  childrens:
+  - a72efef2-1602-483f-a4c6-37f6afde48cb
+  rect:
+    serializedVersion: 2
+    x: 640
+    y: 196
+    width: 150
+    height: 150
+--- !u!114 &-8408590651545789251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 1b3f1052-e873-498b-a98c-16fdad8b88d5
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I said FUCK YOU
+  childrens:
+  - 44231bd7-cc83-445d-9ed1-123e6c240f9c
+  rect:
+    serializedVersion: 2
+    x: 594
+    y: 351
+    width: 150
+    height: 150
+--- !u!114 &-8315576271997404359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 963f2fcc-e398-49ab-8b55-e4187bbc620e
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Sorry, Can you repeat?
+  childrens:
+  - b5910850-438c-49c1-bf8b-f63b13993991
+  rect:
+    serializedVersion: 2
+    x: 421
+    y: 650
+    width: 150
+    height: 150
+--- !u!114 &-8062420228560704842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 039c8238-1405-4424-9ae7-cdcf2c4a3b22
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: my name is pavel
+  childrens:
+  - b306dfff-c201-4c33-8ece-765c0a92c019
+  rect:
+    serializedVersion: 2
+    x: 621
+    y: 4
+    width: 150
+    height: 150
+--- !u!114 &-7506456829383560828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 32570951-15d9-4861-bc11-f3c619453cf2
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: what did you say?
+  childrens:
+  - db74f5b4-01b4-455a-a1f2-8b6cddfdc371
+  - 1b3f1052-e873-498b-a98c-16fdad8b88d5
+  rect:
+    serializedVersion: 2
+    x: 439
+    y: 256
+    width: 150
+    height: 150
+--- !u!114 &-7492060180880124041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 3e756b23-444c-4b3f-b7f9-b9a1c93efe92
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: well, sounds nice
+  childrens:
+  - 2241b650-11af-45b4-b452-0f1923cff5bf
+  rect:
+    serializedVersion: 2
+    x: 589
+    y: 525
+    width: 150
+    height: 150
+--- !u!114 &-7355189402056280112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 44231bd7-cc83-445d-9ed1-123e6c240f9c
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: ARRRRRRRR
+  childrens: []
+  rect:
+    serializedVersion: 2
+    x: 754
+    y: 354
+    width: 150
+    height: 150
+--- !u!114 &-7241149756924688963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: b5910850-438c-49c1-bf8b-f63b13993991
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: I am a guard of Ghost Town
+  childrens:
+  - 963f2fcc-e398-49ab-8b55-e4187bbc620e
+  - 3e756b23-444c-4b3f-b7f9-b9a1c93efe92
+  rect:
+    serializedVersion: 2
+    x: 425
+    y: 457
+    width: 150
+    height: 150
+--- !u!114 &-5836187996905052186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: c504929a-80fe-4f3f-be3b-b9b27c9ab514
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Hello
+  childrens:
+  - a72efef2-1602-483f-a4c6-37f6afde48cb
+  rect:
+    serializedVersion: 2
+    x: 258
+    y: 115
+    width: 150
+    height: 150
+--- !u!114 &-3360127432098056406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: b306dfff-c201-4c33-8ece-765c0a92c019
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: have a good day, pavel
+  childrens: []
+  rect:
+    serializedVersion: 2
+    x: 779
+    y: 34
+    width: 150
+    height: 150
+--- !u!114 &-2997228873809880476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: ce65dfb0-cd2a-4773-b692-394bced50e98
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Hello there, traveler
+  childrens:
+  - c504929a-80fe-4f3f-be3b-b9b27c9ab514
+  - 87bcb662-66c4-47bc-b045-a632a98b8d7b
+  - 553e39c7-4000-49d4-b608-8e064029742c
+  rect:
+    serializedVersion: 2
+    x: 22
+    y: 286
+    width: 150
+    height: 150
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b4c48d50300814a871ea5481bc8573, type: 3}
+  m_Name: Test6
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -2997228873809880476}
+  - {fileID: -5836187996905052186}
+  - {fileID: 2473444696506117643}
+  - {fileID: 7500895560530192640}
+  - {fileID: -9197272173453900495}
+  - {fileID: -8062420228560704842}
+  - {fileID: -3360127432098056406}
+  - {fileID: -7506456829383560828}
+  - {fileID: -8942518097352407812}
+  - {fileID: -8408590651545789251}
+  - {fileID: -7355189402056280112}
+  - {fileID: -7241149756924688963}
+  - {fileID: -8315576271997404359}
+  - {fileID: -7492060180880124041}
+  - {fileID: -9035571034884129916}
+--- !u!114 &2473444696506117643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 87bcb662-66c4-47bc-b045-a632a98b8d7b
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: fuck you
+  childrens:
+  - 32570951-15d9-4861-bc11-f3c619453cf2
+  rect:
+    serializedVersion: 2
+    x: 255
+    y: 261
+    width: 150
+    height: 150
+--- !u!114 &7500895560530192640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 553e39c7-4000-49d4-b608-8e064029742c
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: who are you
+  childrens:
+  - b5910850-438c-49c1-bf8b-f63b13993991
+  rect:
+    serializedVersion: 2
+    x: 259
+    y: 418
+    width: 150
+    height: 150
