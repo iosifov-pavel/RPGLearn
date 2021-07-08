@@ -9,21 +9,28 @@ public class DialogUI : MonoBehaviour
     PlayerSpeaker player;
     [SerializeField] Button nextButton;
     [SerializeField] TextMeshProUGUI AIText;
+    [SerializeField] TextMeshProUGUI speaker;
     [SerializeField] GameObject answerPrefab;
     [SerializeField] Transform choicesRoot;
     [SerializeField] GameObject playerAnswerPanel;
+    [SerializeField] Button quitButton;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSpeaker>();
-        nextButton.onClick.AddListener(Next);
+        player.OnDialogueUpdated+=UpdateUI;
+        nextButton.onClick.AddListener(player.Next);
+        quitButton.onClick.AddListener(delegate(){player.CloseDialogue();});
         UpdateUI();
     }
 
     // Update is called once per frame
     void UpdateUI()
     {
+        gameObject.SetActive(player.IsActive());
+        if(!player.IsActive()) return;
         playerAnswerPanel.SetActive(player.HasAnswers());
+        speaker.text = player.GetAINAme();
         AIText.text = player.GetText();
         nextButton.gameObject.SetActive(player.HasNext() && !player.HasAnswers());
         foreach (Transform item in choicesRoot)
@@ -31,11 +38,12 @@ public class DialogUI : MonoBehaviour
             Destroy(item.gameObject);
         }
         if(player.HasAnswers()){
+            player.SetAnswers();
             foreach(DialogueNode choiseNode in player.GetChoices()){
                 GameObject newButton = Instantiate(answerPrefab,choicesRoot);
                 Text newText = newButton.transform.GetChild(0).GetComponent<Text>();
                 newText.text = choiseNode.GetText();
-                newButton.GetComponent<Button>().onClick.AddListener(delegate(){NextForAnswer(choiseNode);});
+                newButton.GetComponent<Button>().onClick.AddListener(()=>player.NextForCurrentNode(choiseNode));
             }
         }
         else if(!player.HasNext())
@@ -44,21 +52,7 @@ public class DialogUI : MonoBehaviour
             GameObject newButton = Instantiate(answerPrefab, choicesRoot);
             Text newText = newButton.transform.GetChild(0).GetComponent<Text>();
             newText.text = "End of a Dialog";
-            newButton.GetComponent<Button>().onClick.AddListener(Close);
+            newButton.GetComponent<Button>().onClick.AddListener(player.CloseDialogue);
         }
-    }
-
-    public void Next(){
-        player.Next();
-        UpdateUI();
-    }
-
-    public void NextForAnswer(DialogueNode node){
-        player.NextForCurrentNode(node);
-        UpdateUI();
-    }
-
-    public void Close(){
-        player.CloseDialogue();
-    }    
+    } 
 }

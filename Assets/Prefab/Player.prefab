@@ -42,6 +42,9 @@ MonoBehaviour:
   - type: 4
     texture: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
     hotspot: {x: 0, y: 0}
+  - type: 5
+    texture: {fileID: 2800000, guid: 96d4bfdb0d6d8c042bf8fccf6524d239, type: 3}
+    hotspot: {x: 0, y: 0}
 --- !u!114 &1477077051662512693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +87,19 @@ MonoBehaviour:
   randomRadius: 1.5
   dropLibrary: []
   numberOfDrops: 2
+--- !u!114 &3536319591385968159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8364875607766541323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36167a7ebe09dbe4f82f822616adec52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testtDialogue: {fileID: 11400000, guid: 245c64769dfe2394387a235e6d2dadb8, type: 2}
 --- !u!114 &3826182955395296351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,19 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a19ff972ec6859b48870488d7b1e81b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3536319591385968159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8364875607766541323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36167a7ebe09dbe4f82f822616adec52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentDialogue: {fileID: 11400000, guid: 245c64769dfe2394387a235e6d2dadb8, type: 2}
 --- !u!1001 &595235822656169352
 PrefabInstance:
   m_ObjectHideFlags: 0

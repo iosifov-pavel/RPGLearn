@@ -9,6 +9,11 @@ public class DialogueNode : ScriptableObject
     [SerializeField] private string text;
     [SerializeField] private List<string> childrens = new List<string>();
     [SerializeField] private Rect rect = new Rect();
+    [SerializeField] DialogActions dialogAction = DialogActions.None;
+
+    public DialogActions GetActions(){
+        return dialogAction;
+    }
 
     public void SetGUID(){
         this.name = System.Guid.NewGuid().ToString();
@@ -71,4 +76,12 @@ public class DialogueNode : ScriptableObject
         EditorUtility.SetDirty(this);
     }
 
+}
+
+public enum DialogActions{
+    None,
+    Attack,
+    QuestStarted,
+    QuestComplete,
+    Die
 }

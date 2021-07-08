@@ -72,18 +72,27 @@ public class AIController : MonoBehaviour
         timeSinseAggro +=Time.deltaTime;
     }
 
-        private void AggroFriends()
-        {
-            RaycastHit[] hits = Physics.SphereCastAll(transform.position, agroradius, Vector3.up, 0);
-            foreach(RaycastHit hit in hits){
-                AIController enemy = hit.transform.GetComponent<AIController>();
-                if(enemy){
-                    enemy.Aggro();
-                }
+    private void AggroFriends()
+    {
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, agroradius, Vector3.up, 0);
+        foreach(RaycastHit hit in hits){
+            AIController enemy = hit.transform.GetComponent<AIController>();
+            if(enemy){
+                enemy.Aggro();
             }
         }
+    }
 
-        public void Aggro(){
+    public void Aggro(){
+        CombatTarget combatTarget = GetComponent<CombatTarget>();
+        AISpeaker aISpeaker = GetComponent<AISpeaker>();
+        if(combatTarget==null){
+            gameObject.AddComponent<CombatTarget>();
+        }
+        else{
+            combatTarget.enabled = true;
+        }
+        if(aISpeaker) aISpeaker.enabled=false;
         timeSinseAggro = 0f;
     }
 

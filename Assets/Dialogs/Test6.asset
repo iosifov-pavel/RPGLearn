@@ -22,6 +22,7 @@ MonoBehaviour:
     y: 35
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-9035571034884129916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43,6 +44,7 @@ MonoBehaviour:
     y: 547
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-8942518097352407812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,6 +67,7 @@ MonoBehaviour:
     y: 196
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-8408590651545789251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +90,7 @@ MonoBehaviour:
     y: 351
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-8315576271997404359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +113,7 @@ MonoBehaviour:
     y: 948
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-8062420228560704842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +136,7 @@ MonoBehaviour:
     y: 30
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-7506456829383560828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +160,7 @@ MonoBehaviour:
     y: 256
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-7492060180880124041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +183,7 @@ MonoBehaviour:
     y: 523
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-7355189402056280112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,10 +201,11 @@ MonoBehaviour:
   childrens: []
   rect:
     serializedVersion: 2
-    x: 754
+    x: 755
     y: 354
     width: 150
     height: 150
+  dialogAction: 1
 --- !u!114 &-7241149756924688963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +229,7 @@ MonoBehaviour:
     y: 457
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-5836187996905052186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +252,7 @@ MonoBehaviour:
     y: 115
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-5133639694249729909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +274,7 @@ MonoBehaviour:
     y: 735
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-3391753218627890588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +299,7 @@ MonoBehaviour:
     y: 127
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-3360127432098056406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +321,7 @@ MonoBehaviour:
     y: 34
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-2997228873809880476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +344,7 @@ MonoBehaviour:
     y: 326
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &-2656237192677126198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +367,7 @@ MonoBehaviour:
     y: 679
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +422,7 @@ MonoBehaviour:
     y: 261
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &6783239237118756707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +446,7 @@ MonoBehaviour:
     y: 755
     width: 150
     height: 150
+  dialogAction: 0
 --- !u!114 &7500895560530192640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,3 +469,4 @@ MonoBehaviour:
     y: 418
     width: 150
     height: 150
+  dialogAction: 0

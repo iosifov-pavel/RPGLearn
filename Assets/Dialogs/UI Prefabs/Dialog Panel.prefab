@@ -614,10 +614,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextButton: {fileID: 4607432427625824707}
   AIText: {fileID: 5859806130048743595}
+  speaker: {fileID: 4026796019610398942}
   answerPrefab: {fileID: 1302672040066546065, guid: 0cc6095a9b75bf1418b670883ce7ccb8,
     type: 3}
   choicesRoot: {fileID: 6840149808514721073}
   playerAnswerPanel: {fileID: 2812331153481107043}
+  quitButton: {fileID: 6078169841600592294}
 --- !u!1 &5165388287021035014
 GameObject:
   m_ObjectHideFlags: 0
