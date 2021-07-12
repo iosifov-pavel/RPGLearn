@@ -42,7 +42,9 @@ public class DialogUI : MonoBehaviour
             foreach(DialogueNode choiseNode in player.GetChoices()){
                 GameObject newButton = Instantiate(answerPrefab,choicesRoot);
                 Text newText = newButton.transform.GetChild(0).GetComponent<Text>();
-                newText.text = choiseNode.GetText();
+                string additionText ="";
+                if(choiseNode.GetChildrens().Count==0) additionText = " (End of a Dialog)";
+                newText.text = choiseNode.GetText()+additionText;
                 newButton.GetComponent<Button>().onClick.AddListener(()=>player.NextForCurrentNode(choiseNode));
             }
         }

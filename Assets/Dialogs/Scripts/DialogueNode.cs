@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -10,6 +11,7 @@ public class DialogueNode : ScriptableObject
     [SerializeField] private List<string> childrens = new List<string>();
     [SerializeField] private Rect rect = new Rect();
     [SerializeField] DialogActions dialogAction = DialogActions.None;
+    [SerializeField] Condition condition;
 
     public DialogActions GetActions(){
         return dialogAction;
@@ -76,6 +78,10 @@ public class DialogueNode : ScriptableObject
         EditorUtility.SetDirty(this);
     }
 
+    public bool CheckCondition(IEnumerable<IPredicateEvaluator> enumerable)
+    {
+        return condition.Check(enumerable);
+    }
 }
 
 public enum DialogActions{

@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36167a7ebe09dbe4f82f822616adec52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testtDialogue: {fileID: 11400000, guid: 245c64769dfe2394387a235e6d2dadb8, type: 2}
 --- !u!114 &3826182955395296351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +124,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0721713522b37614e9cac3681a6d5119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5727029212683379397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8364875607766541323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f7f00847fe8b442b555210b0b8d8bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests:
+  - quest: {fileID: 11400000, guid: 0bc73a83f882ce646a9e9e58b1625f3e, type: 2}
+    completedTasks:
+    - Please, feed me
+  - quest: {fileID: 11400000, guid: 4095cd70c088f4f4a9515bd221fa7b1e, type: 2}
+    completedTasks: []
 --- !u!114 &8904206348017177836
 MonoBehaviour:
   m_ObjectHideFlags: 0

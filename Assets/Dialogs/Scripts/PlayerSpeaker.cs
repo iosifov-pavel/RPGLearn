@@ -44,11 +44,8 @@ public class PlayerSpeaker : MonoBehaviour
 
     public void Next(){
         if(HasNext()){
-            if(currentNode.GetChildrens().Count==0) return;
-            int maxR = currentNode.GetChildrens().Count;
-            int index = UnityEngine.Random.Range(0,maxR);
-            DialogueNode[] answerNodes = currentDialogue.GetAllChildren(currentNode).ToArray();
-            currentNode = answerNodes[index];
+            DialogueNode[] answerNodes = Filter(currentDialogue.GetAllChildren(currentNode)).ToArray();
+            currentNode = answerNodes[0];
             InteractWithNodeAction(currentNode);
         }
         OnDialogueUpdated();
@@ -61,10 +58,24 @@ public class PlayerSpeaker : MonoBehaviour
             return;
         }
         currentNode = currentDialogue.GetAllChildren(node).ToArray()[0];
-        InteractWithNodeAction(currentNode);
+        if(node.IsPlayer()){
+            InteractWithNodeAction(currentNode);
+        }
         OnDialogueUpdated();
     }
 
+    private IEnumerable<DialogueNode> Filter(IEnumerable input){
+        foreach(DialogueNode node in input){
+            if(node.CheckCondition(GetEvaluators())){
+                yield return node;
+            }
+        }
+    }
+
+    private IEnumerable<IPredicateEvaluator> GetEvaluators()
+    {
+        return GetComponents<IPredicateEvaluator>();
+    }
 
     public void InteractWithNodeAction(DialogueNode node){
         if(actionsNeedToTrigger){
@@ -97,10 +108,10 @@ public class PlayerSpeaker : MonoBehaviour
     public void SetAnswers()
     {
         answers.Clear();
-        DialogueNode[] answerNodes = currentDialogue.GetAllChildren(currentNode).ToArray();
+        DialogueNode[] answerNodes = Filter(currentDialogue.GetAllChildren(currentNode)).ToArray();
         foreach (DialogueNode node in answerNodes)
         {
-            InteractWithNodeAction(node);
+            //InteractWithNodeAction(node);
             answers.Add(node);
         }
     }
@@ -119,7 +130,7 @@ public class PlayerSpeaker : MonoBehaviour
     public bool HasAnswers(){
         int num = currentNode.GetChildrens().Count;
         if (num ==0) return false;
-        if(!currentDialogue.GetAllChildren(currentNode).ToArray()[0].IsPlayer()) return false;
+        if(!Filter(currentDialogue.GetAllChildren(currentNode)).ToArray()[0].IsPlayer()) return false;
         return true;
     }
 }

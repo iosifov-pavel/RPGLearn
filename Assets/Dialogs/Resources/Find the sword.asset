@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb663de6eee3904cad71153a90d290a, type: 3}
+  m_Name: Find the sword
+  m_EditorClassIdentifier: 
+  tasks:
+  - reference: 1
+    description: Find a sword
+  - reference: 2
+    description: Kill some enemies
+  - reference: 3
+    description: Talk with guard
+  rewards:
+  - number: 3
+    item: {fileID: 11400000, guid: 77d5de7804c3ebc43b6f351489fd5807, type: 2}
+  - number: 1
+    item: {fileID: 11400000, guid: 77d5de7804c3ebc43b6f351489fd5807, type: 2}
+  - number: 2
+    item: {fileID: 11400000, guid: 92d163cd01299424d9803196fb3a8a22, type: 2}

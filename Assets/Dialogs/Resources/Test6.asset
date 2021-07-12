@@ -23,6 +23,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-9035571034884129916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,6 +47,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-8942518097352407812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +72,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-8408590651545789251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +97,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-8315576271997404359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +122,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-8062420228560704842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +147,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-7506456829383560828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,10 +169,12 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 439
-    y: 256
+    y: 257
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-7492060180880124041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +198,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-7355189402056280112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,15 +213,17 @@ MonoBehaviour:
   m_Name: 44231bd7-cc83-445d-9ed1-123e6c240f9c
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: ARRRRRRRR
+  text: Well, Nevermind
   childrens: []
   rect:
     serializedVersion: 2
-    x: 755
-    y: 354
+    x: 757
+    y: 343
     width: 150
     height: 150
   dialogAction: 1
+  condition:
+    and: []
 --- !u!114 &-7241149756924688963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +248,63 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
+--- !u!114 &-7028215733883205056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 4610f840-ff15-4bb1-8ffb-16589a6db10b
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Actually, I am. Can you find a sword and kill some enemies?
+  childrens:
+  - 34312978-e20e-411e-b61a-07500a298e16
+  - b25eaa5a-9e0a-4be6-8423-c95a01043990
+  rect:
+    serializedVersion: 2
+    x: 433
+    y: 1090
+    width: 150
+    height: 150
+  dialogAction: 0
+  condition:
+    and: []
+--- !u!114 &-6852503205693494534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: f7f302f1-e809-4e7b-a4f9-94184f908a17
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: I'm looking for sword
+  childrens:
+  - 745d888a-f025-484d-b885-af8cc82ce637
+  rect:
+    serializedVersion: 2
+    x: 180
+    y: 776
+    width: 150
+    height: 150
+  dialogAction: 0
+  condition:
+    and:
+    - or:
+      - predicate: HasQuest
+        parameters:
+        - Find the sword
 --- !u!114 &-5836187996905052186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +328,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-5133639694249729909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +352,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-3391753218627890588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,13 +372,17 @@ MonoBehaviour:
   - c504929a-80fe-4f3f-be3b-b9b27c9ab514
   - 87bcb662-66c4-47bc-b045-a632a98b8d7b
   - 553e39c7-4000-49d4-b608-8e064029742c
+  - 4dac1431-b3e7-4fc6-b1cf-2081772ca988
+  - f7f302f1-e809-4e7b-a4f9-94184f908a17
   rect:
     serializedVersion: 2
-    x: 86
-    y: 127
+    x: 85
+    y: 126
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-3360127432098056406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +404,9 @@ MonoBehaviour:
     y: 34
     width: 150
     height: 150
-  dialogAction: 0
+  dialogAction: 3
+  condition:
+    and: []
 --- !u!114 &-2997228873809880476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,6 +430,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &-2656237192677126198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,6 +455,33 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
+--- !u!114 &-2203386151495735128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: b25eaa5a-9e0a-4be6-8423-c95a01043990
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: No
+  childrens:
+  - 9e684f4d-fbc9-47a3-bd0f-a33f128d79fe
+  rect:
+    serializedVersion: 2
+    x: 752
+    y: 1234
+    width: 150
+    height: 150
+  dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +514,66 @@ MonoBehaviour:
   - {fileID: -2656237192677126198}
   - {fileID: 6783239237118756707}
   - {fileID: -5133639694249729909}
+  - {fileID: 1976164206928337897}
+  - {fileID: -7028215733883205056}
+  - {fileID: 8619869914860026966}
+  - {fileID: -2203386151495735128}
+  - {fileID: 7430287481791108366}
+  - {fileID: -6852503205693494534}
+  - {fileID: 671519714242720484}
+--- !u!114 &671519714242720484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 745d888a-f025-484d-b885-af8cc82ce637
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Okay, thanks
+  childrens: []
+  rect:
+    serializedVersion: 2
+    x: 381
+    y: 773
+    width: 150
+    height: 150
+  dialogAction: 0
+  condition:
+    and: []
+--- !u!114 &1976164206928337897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 4dac1431-b3e7-4fc6-b1cf-2081772ca988
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Do you Need Something?
+  childrens:
+  - 4610f840-ff15-4bb1-8ffb-16589a6db10b
+  rect:
+    serializedVersion: 2
+    x: 195
+    y: 598
+    width: 150
+    height: 150
+  dialogAction: 0
+  condition:
+    and:
+    - or:
+      - predicate: '!HasQuest'
+        parameters:
+        - Find the sword
 --- !u!114 &2473444696506117643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,6 +597,8 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &6783239237118756707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +623,32 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
+--- !u!114 &7430287481791108366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 9e684f4d-fbc9-47a3-bd0f-a33f128d79fe
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Well, Nevermind
+  childrens: []
+  rect:
+    serializedVersion: 2
+    x: 961
+    y: 1188
+    width: 150
+    height: 150
+  dialogAction: 0
+  condition:
+    and: []
 --- !u!114 &7500895560530192640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,3 +672,29 @@ MonoBehaviour:
     width: 150
     height: 150
   dialogAction: 0
+  condition:
+    and: []
+--- !u!114 &8619869914860026966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8b7ec7be9ee964f8a4b5fcb6d78304, type: 3}
+  m_Name: 34312978-e20e-411e-b61a-07500a298e16
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Yes
+  childrens: []
+  rect:
+    serializedVersion: 2
+    x: 747
+    y: 1074
+    width: 150
+    height: 150
+  dialogAction: 2
+  condition:
+    and: []

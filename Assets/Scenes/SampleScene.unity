@@ -241,6 +241,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: {fileID: 11400000, guid: 245c64769dfe2394387a235e6d2dadb8, type: 2}
   speakerName: That One Guy
+--- !u!114 &54953904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54953902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a91871077038454a8d61f2df4de8cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 11400000, guid: 4095cd70c088f4f4a9515bd221fa7b1e, type: 2}
 --- !u!114 &54953905 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2143753670522117896, guid: 35cb7398d1a28c84ca2c1de2aeb352f8,
@@ -253,6 +266,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d920fcea2f2cdb4ab2cb2f781ad8468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &54953906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54953902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0f361e659ea124fbb26c26f65ce155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 11400000, guid: 4095cd70c088f4f4a9515bd221fa7b1e, type: 2}
+  task: 1
 --- !u!114 &54953912 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8340150698310134979, guid: 35cb7398d1a28c84ca2c1de2aeb352f8,
@@ -315,6 +342,36 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+  GiveQuest:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 54953904}
+        m_TargetAssemblyTypeName: QuestGiver, Assembly-CSharp
+        m_MethodName: GiveQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  CompleteQuest:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 54953906}
+        m_TargetAssemblyTypeName: QuestCompletion, Assembly-CSharp
+        m_MethodName: CompleteObjective
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1001 &106343809
 PrefabInstance:
@@ -2353,50 +2410,6 @@ Transform:
   - {fileID: 708646414}
   m_Father: {fileID: 467082028}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1340604029
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1340604031}
-  - component: {fileID: 1340604030}
-  m_Layer: 0
-  m_Name: QuestUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1340604030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340604029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8428765654cb1e14ba6bc39088e3de56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  quest: {fileID: 11400000, guid: 4095cd70c088f4f4a9515bd221fa7b1e, type: 2}
---- !u!4 &1340604031
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1340604029}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8234851, y: -3.867659, z: -3.139593}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!850595691 &1411056868
 LightingSettings:
@@ -10680,7 +10693,7 @@ PrefabInstance:
     - target: {fileID: 6842397166370742652, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -570.74976
+      value: -570.75
       objectReference: {fileID: 0}
     - target: {fileID: 6842949200121738206, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
@@ -11271,6 +11284,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988309665182368961, guid: e3c08d7080ad80946b959704b31d95f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0234375
+      objectReference: {fileID: 0}
+    - target: {fileID: 8988309665182368961, guid: e3c08d7080ad80946b959704b31d95f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -187.91382
       objectReference: {fileID: 0}
     - target: {fileID: 8998209589616752348, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}

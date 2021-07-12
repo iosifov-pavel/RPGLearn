@@ -86,7 +86,8 @@ namespace GameDevTV.Inventories
 
         void ISaveable.RestoreState(object state)
         {
-            var droppedItemsList = (DropRecord[])state;
+            var droppedItemsList = state as DropRecord[];
+            if(droppedItemsList==null) return;
             otherSceneDroppedItems.Clear();
             foreach (var item in droppedItemsList)
             {

@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bb663de6eee3904cad71153a90d290a, type: 3}
-  m_Name: Quest
+  m_Name: Don't feed the monkey
   m_EditorClassIdentifier: 
   tasks:
-  - Talk
-  - Kill
-  - Talk again
-  - Kill again
-  - End quest
+  - Please, feed me
+  - Plesase, Plesase, Plesase
+  - I'm begging you!
+  - Just one banana
