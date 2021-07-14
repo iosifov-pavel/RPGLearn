@@ -4,5 +4,6 @@
         Combat,
         UI,
         Pickup,
-        Dialogue
+        Dialogue,
+        Shop
     }
