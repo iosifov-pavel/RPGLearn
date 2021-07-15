@@ -1734,16 +1734,16 @@ MonoBehaviour:
   shopName: Red Monster Shop
   stockConfig:
   - item: {fileID: 11400000, guid: 77d5de7804c3ebc43b6f351489fd5807, type: 2}
-    initilaStock: 5
+    initilaStock: 10
     discountPercentage: 13
   - item: {fileID: 11400000, guid: 92d163cd01299424d9803196fb3a8a22, type: 2}
-    initilaStock: 10
+    initilaStock: 15
     discountPercentage: 6.5
   - item: {fileID: 11400000, guid: 999106faec03571448b128b5426309b0, type: 2}
-    initilaStock: 1
+    initilaStock: 8
     discountPercentage: 33.4
   - item: {fileID: 11400000, guid: 8dc0a25e1b2e9ff41abc9740fdd3c917, type: 2}
-    initilaStock: 3
+    initilaStock: 12
     discountPercentage: 0
 --- !u!114 &853987979 stripped
 MonoBehaviour:
@@ -12060,6 +12060,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1054593994026260421, guid: e3c08d7080ad80946b959704b31d95f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000045776367
+      objectReference: {fileID: 0}
     - target: {fileID: 1091852579650476903, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -13510,6 +13515,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6103952839941976806, guid: e3c08d7080ad80946b959704b31d95f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000045776367
+      objectReference: {fileID: 0}
     - target: {fileID: 6230588368859514618, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -13818,7 +13828,7 @@ PrefabInstance:
     - target: {fileID: 6842397166370742652, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -570.74994
+      value: -570.75
       objectReference: {fileID: 0}
     - target: {fileID: 6842949200121738206, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
@@ -14344,6 +14354,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8659818455368995634, guid: e3c08d7080ad80946b959704b31d95f6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000045776367
       objectReference: {fileID: 0}
     - target: {fileID: 8722558968194315074, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}

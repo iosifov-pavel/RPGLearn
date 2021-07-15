@@ -19,7 +19,14 @@ public class Shop : MonoBehaviour, IRaycastable
     Shopper player = null;
     Money playerMoney=null;
     Dictionary<InventoryItem, int> transaction = new Dictionary<InventoryItem, int>();
+    Dictionary<InventoryItem, int> stock = new Dictionary<InventoryItem, int>();
     public event Action onChange;
+
+    private void Awake() {
+        foreach(StockItemConfig config in stockConfig){
+            stock[config.item] = config.initilaStock;
+        }
+    }
     public IEnumerable<ShopItem> GetFilteredItems(){
         return GetAllItems();
     }
@@ -30,7 +37,7 @@ public class Shop : MonoBehaviour, IRaycastable
             price*=(100-config.discountPercentage)/100;
             int quantityInTransaction = 0;
             transaction.TryGetValue(config.item, out quantityInTransaction);
-            yield return new ShopItem(config.item,config.initilaStock, price, quantityInTransaction);
+            yield return new ShopItem(config.item,stock[config.item], price, quantityInTransaction);
         }
     }
 
@@ -46,10 +53,12 @@ public class Shop : MonoBehaviour, IRaycastable
                 bool sucsess = playerInventory.AddToFirstEmptySlot(item,1);
                 if(sucsess){
                     AddToTransaction(item,-1);
+                    stock[item]--;
                     playerMoney.UpdateBalance(-price);
                 }
             }
         }
+        onChange();
     }
 
     public void SwitchMode(bool isBuying){
@@ -61,6 +70,8 @@ public class Shop : MonoBehaviour, IRaycastable
     }
 
     public bool CanTransact(){
+        if(transaction.Count==0) return false;
+        if(playerMoney.GetBalance()<TransactionTotal()) return false;
         return true;
     }
 
@@ -86,7 +97,9 @@ public class Shop : MonoBehaviour, IRaycastable
         if(!transaction.ContainsKey(item)){
             transaction[item]=0;
         }
-        transaction[item]+=quantitiy;
+        if(transaction[item]+quantitiy<=stock[item]){
+            transaction[item]+=quantitiy;
+        }
         if(transaction[item]<=0){
             transaction.Remove(item);
         }
