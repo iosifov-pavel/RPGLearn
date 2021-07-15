@@ -18,24 +18,31 @@ public class ShopItem{
         this.price=price;
         this.quantityInTransaction = quantityInTransaction;
     }
+    public InventoryItem GetItem(){
+        return item;
+    }
 
-    internal Sprite GetIcon()
+    public Sprite GetIcon()
     {
         return item.GetIcon();
     }
 
-    internal float GetPrice()
+    public float GetPrice()
     {
         return price;
     }
 
-    internal int GetAvalability()
+    public int GetAvalability()
     {
         return avalability;
     }
 
-    internal string GetName()
+    public string GetName()
     {
         return item.GetDisplayName();
+    }
+
+    public int GetQuantity(){
+        return quantityInTransaction;
     }
 }

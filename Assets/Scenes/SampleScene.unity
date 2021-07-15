@@ -1732,6 +1732,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopName: Red Monster Shop
+  stockConfig:
+  - item: {fileID: 11400000, guid: 77d5de7804c3ebc43b6f351489fd5807, type: 2}
+    initilaStock: 5
+    discountPercentage: 13
+  - item: {fileID: 11400000, guid: 92d163cd01299424d9803196fb3a8a22, type: 2}
+    initilaStock: 10
+    discountPercentage: 6.5
+  - item: {fileID: 11400000, guid: 999106faec03571448b128b5426309b0, type: 2}
+    initilaStock: 1
+    discountPercentage: 33.4
+  - item: {fileID: 11400000, guid: 8dc0a25e1b2e9ff41abc9740fdd3c917, type: 2}
+    initilaStock: 3
+    discountPercentage: 0
 --- !u!114 &853987979 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7662511798961620848, guid: e3c08d7080ad80946b959704b31d95f6,
@@ -13805,7 +13818,7 @@ PrefabInstance:
     - target: {fileID: 6842397166370742652, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -570.7499
+      value: -570.74994
       objectReference: {fileID: 0}
     - target: {fileID: 6842949200121738206, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}

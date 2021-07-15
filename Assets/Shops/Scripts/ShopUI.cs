@@ -9,6 +9,8 @@ public class ShopUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI shopName=null;
     [SerializeField] GameObject rowsContainer=null;
     [SerializeField] RowUI rowPrefab=null;
+    [SerializeField] TextMeshProUGUI total=null;
+    
     Shopper player = null;
     Shop currentShop = null;
 
@@ -30,9 +32,15 @@ public class ShopUI : MonoBehaviour
     }
 
     void ShopChanged(){
+        if(currentShop){
+            currentShop.onChange-=RefreshUI;
+        }
         currentShop = player.GetActiveShop();
         gameObject.SetActive(currentShop!=null);
-        if(currentShop)shopName.text = currentShop.GetName();
+        if(currentShop){
+            shopName.text = currentShop.GetName();
+            currentShop.onChange+=RefreshUI;
+        }
         RefreshUI();
     }
 
@@ -42,11 +50,16 @@ public class ShopUI : MonoBehaviour
         ChildsHelper.DeleteChilds(rowsContainer);
         foreach(ShopItem item in currentShop.GetFilteredItems()){
             RowUI newRow = Instantiate<RowUI>(rowPrefab,rowsContainer.transform);
-            newRow.Setup(item);
+            newRow.Setup(item,currentShop,item.GetQuantity());
         }
+        total.text = $"Total: ${currentShop.TransactionTotal():N2}";
     }
 
     public void CloseWindow(){
         player.SetActiveShop(null);
+    }
+
+    public void ConfirmButton(){
+        currentShop.ConfirmTransaction();
     }
 }

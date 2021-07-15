@@ -27,11 +27,15 @@ namespace GameDevTV.Inventories
         [SerializeField] Pickup pickup = null;
         [Tooltip("If true, multiple items of this type can be stacked in the same inventory slot.")]
         [SerializeField] bool stackable = false;
+        [SerializeField] float price=0f;
 
         // STATE
         static Dictionary<string, InventoryItem> itemLookupCache;
 
         // PUBLIC
+        public float GetPrice(){
+            return price;
+        }
 
         /// <summary>
         /// Get the inventory item instance from its UUID.
