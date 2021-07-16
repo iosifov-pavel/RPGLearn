@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b60e208b79d9f1944aaea048270134f7, type: 3}
+  m_Name: FireBallSpell
+  m_EditorClassIdentifier: 
+  itemID: 8ab44bd9-3423-4c7a-9063-0723edd9b681
+  displayName: FireBallSpell
+  description: 
+  icon: {fileID: 21300000, guid: aba0f700d91d4fc4fa8c724899ab04ab, type: 3}
+  pickup: {fileID: 1324538328693785685, guid: 9dcaaa1593397274fa9197347b0f6175, type: 3}
+  stackable: 0
+  price: 50
+  category: 3
+  consumable: 0
+  strategy: {fileID: 11400000, guid: 1cb43c9ba91c5d046bd33943c899c62c, type: 2}

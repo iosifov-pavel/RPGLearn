@@ -1748,6 +1748,10 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: a07348a8c3c6f5d408d0644de52aec3d, type: 2}
     initilaStock: 40
     discountPercentage: 0
+  - item: {fileID: 11400000, guid: 1bca14206139a9e4dbfacca021124cde, type: 2}
+    initilaStock: 3
+    discountPercentage: 32.1
+  sellingMultiplier: 0.75
 --- !u!114 &853987979 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7662511798961620848, guid: e3c08d7080ad80946b959704b31d95f6,
@@ -13831,7 +13835,7 @@ PrefabInstance:
     - target: {fileID: 6842397166370742652, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -570.74976
+      value: -570.75
       objectReference: {fileID: 0}
     - target: {fileID: 6842949200121738206, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}

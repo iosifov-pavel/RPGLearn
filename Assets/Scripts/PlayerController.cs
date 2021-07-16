@@ -7,13 +7,14 @@ using RPG.Core;
 using System;
 using UnityEngine.EventSystems;
 using UnityEngine.AI;
+using GameDevTV.Inventories;
 
 namespace RPG.Control{
 public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     Health health;
-
+    ActionStore actionStore;
 
     [System.Serializable]
     struct CursorMaping{
@@ -24,11 +25,13 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] CursorMaping[] cursorsMap = null;
+    [SerializeField] int numberOfAbilities = 6;
     private bool isDraggingUI=false;
 
     private void Awake()
     {
         health = GetComponent<Health>();
+        actionStore = GetComponent<ActionStore>();
     }
 
 
@@ -43,9 +46,19 @@ public class PlayerController : MonoBehaviour
                 SetCursor(Cursors.None);
                 return;
             } 
+            UseAbilities();
             if(InteractWithComponent()) return;
             if(InteractWithMovement()) return;
             SetCursor(Cursors.None);
+        }
+
+        private void UseAbilities()
+        {
+            for(int i=0;i<numberOfAbilities;i++){
+                if(Input.GetKeyDown(KeyCode.Alpha1+i)){
+                    actionStore.Use(i, gameObject);
+                }
+            }            
         }
 
         private bool InteractWithComponent()
