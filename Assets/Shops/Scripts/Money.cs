@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameDevTV.Saving;
 using UnityEngine;
 
-public class Money : MonoBehaviour
+public class Money : MonoBehaviour, ISaveable
 {
     [SerializeField] float startingBalance = 400f;
     float balance = 0;
@@ -22,4 +23,15 @@ public class Money : MonoBehaviour
         balance+=amount;
         OnChange();
     }
+
+    public object CaptureState()
+    {
+        return balance;
+    }
+
+    public void RestoreState(object state)
+    {
+        balance = (float) state;
+    }
+
 }

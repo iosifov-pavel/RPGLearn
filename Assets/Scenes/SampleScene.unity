@@ -1321,6 +1321,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialog NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 702580827273901097, guid: 35cb7398d1a28c84ca2c1de2aeb352f8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 702580827273901101, guid: 35cb7398d1a28c84ca2c1de2aeb352f8,
         type: 3}
       propertyPath: m_RootOrder
@@ -13835,7 +13840,7 @@ PrefabInstance:
     - target: {fileID: 6842397166370742652, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -570.75
+      value: -570.7499
       objectReference: {fileID: 0}
     - target: {fileID: 6842949200121738206, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
@@ -19665,6 +19670,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8878581119002727748, guid: f403874fbd712c846bcd6dfd7e4ec47c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8878581120111637048, guid: f403874fbd712c846bcd6dfd7e4ec47c,
         type: 3}
       propertyPath: m_Name
