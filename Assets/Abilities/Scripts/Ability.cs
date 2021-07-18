@@ -7,22 +7,29 @@ public class Ability : ActionItem {
     [SerializeField] TargetingStrategy targeting;
     [SerializeField] FilterStrategy[] filterings;
     [SerializeField] EffectStrategy[] effects;
+    [SerializeField] float cooldown = 2f;
+    AbilityData data=null;
     public override void Use(GameObject user)
     {
-        targeting.StartTargeting(user, (IEnumerable<GameObject> targets)=>{
-            TargetAqired(user,targets);
+        var store = user.GetComponent<CooldownStore>();
+        if(store.GetCooldownTime(this)!=0) return;
+        data = new AbilityData(user);
+        targeting.StartTargeting(data, ()=>{
+            TargetAqired(data);
         });
     }
 
-    private void TargetAqired(GameObject user, IEnumerable<GameObject> targets){
-        if(targets==null){
+    private void TargetAqired(AbilityData data){
+        var store = data.GetUser().GetComponent<CooldownStore>();
+        store.StartCooldown(this, cooldown);
+        if(data.GetTargets()==null){
             Debug.Log("Zero obj");
         }
         foreach(FilterStrategy strategy in filterings){
-            targets = strategy.Filter(targets);
+            data.SetTargets(strategy.Filter(data.GetTargets()));
         }
         foreach(EffectStrategy effect in effects){
-            effect.StartEffect(user, targets, EffectFinished);
+            effect.StartEffect(data, EffectFinished);
         }
         
     }

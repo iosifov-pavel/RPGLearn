@@ -15,13 +15,13 @@ public class DelayedClickTargeting : TargetingStrategy
     [SerializeField] float radius = 5;
     [SerializeField] GameObject effectPrefab=null;
 
-    public override void StartTargeting(GameObject user, Targets finished)
+    public override void StartTargeting(AbilityData data, Targets finished)
     {
-        controller = user.GetComponent<PlayerController>();
-        controller.StartCoroutine(Targeting(user,controller,finished));
+        controller = data.GetUser().GetComponent<PlayerController>();
+        controller.StartCoroutine(Targeting(data,controller,finished));
     }
 
-    private IEnumerator Targeting(GameObject user, PlayerController controller, Targets finished){
+    private IEnumerator Targeting(AbilityData data, PlayerController controller, Targets finished){
         controller.enabled = false;
         RaycastHit hit;
         GameObject effect = Instantiate(effectPrefab);
@@ -35,7 +35,9 @@ public class DelayedClickTargeting : TargetingStrategy
                     // чтобы не запускать движение этим кликом
                     yield return new WaitWhile(()=>Input.GetMouseButton(0));
                     controller.enabled = true;
-                    finished(LookForTargets(hit));
+                    data.SetPoint(hit.point);
+                    data.SetTargets(LookForTargets(hit));
+                    finished();
                     Destroy(effect);
                     yield break;
                 }   

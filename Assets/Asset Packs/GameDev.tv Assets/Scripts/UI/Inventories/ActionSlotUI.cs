@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GameDevTV.Core.UI.Dragging;
 using GameDevTV.Inventories;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GameDevTV.UI.Inventories
 {
@@ -14,15 +15,23 @@ namespace GameDevTV.UI.Inventories
         // CONFIG DATA
         [SerializeField] InventoryItemIcon icon = null;
         [SerializeField] int index = 0;
+        [SerializeField] Image cooldownImage=null;
 
         // CACHE
         ActionStore store;
+        CooldownStore cooldownStore;
 
         // LIFECYCLE METHODS
         private void Awake()
         {
             store = GameObject.FindGameObjectWithTag("Player").GetComponent<ActionStore>();
+            cooldownStore = store.gameObject.GetComponent<CooldownStore>();
             store.storeUpdated += UpdateIcon;
+        }
+
+        private void Update() {
+            if(GetItem()==null) return;
+            cooldownImage.fillAmount = cooldownStore.GetPercentage(GetItem());
         }
 
         // PUBLIC

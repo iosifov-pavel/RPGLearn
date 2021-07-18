@@ -3,5 +3,5 @@ using UnityEngine;
 public abstract class EffectStrategy : ScriptableObject {
     
     public delegate void Applied();
-    public abstract void StartEffect(GameObject user, IEnumerable<GameObject> targets, Applied finished);
+    public abstract void StartEffect(AbilityData data, Applied finished);
 }
