@@ -26,7 +26,7 @@ public class DelayedClickTargeting : TargetingStrategy
         RaycastHit hit;
         GameObject effect = Instantiate(effectPrefab);
         effect.transform.localScale = new Vector3(radius*2,1,radius*2);
-        while(true){
+        while(!data.IsCancelled()){
             Cursor.SetCursor(texture, hotspot, CursorMode.Auto);
             if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition),out hit,100f,terrain)){
                 effect.transform.position = hit.point;
@@ -34,16 +34,16 @@ public class DelayedClickTargeting : TargetingStrategy
                     //ждём пока кнопка мыши не будет отпущена
                     // чтобы не запускать движение этим кликом
                     yield return new WaitWhile(()=>Input.GetMouseButton(0));
-                    controller.enabled = true;
                     data.SetPoint(hit.point);
                     data.SetTargets(LookForTargets(hit));
-                    finished();
-                    Destroy(effect);
-                    yield break;
+                    break;
                 }   
             }
             yield return null;
         }
+        controller.enabled = true;
+        Destroy(effect);
+        finished();
     }
 
     private IEnumerable<GameObject> LookForTargets(RaycastHit point){

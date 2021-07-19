@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Green Explosion
   m_EditorClassIdentifier: 
   visualPrefab: {fileID: 459750, guid: cd4d7020429cde74db076ffa72495419, type: 3}
-  destroyDelay: -1
+  destroyDelay: 2

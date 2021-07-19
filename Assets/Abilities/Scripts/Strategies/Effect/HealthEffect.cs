@@ -12,8 +12,8 @@ public class HealthEffect : EffectStrategy
         foreach(GameObject target in data.GetTargets()){
             Health targetHealth = target.GetComponent<Health>();
             if(targetHealth){
-                healthAmount = isHealing ? -healthAmount : healthAmount;
-                targetHealth.TakeDamage(data.GetUser(),healthAmount);
+                if(isHealing) targetHealth.Heal(data.GetUser(), healthAmount);
+                else targetHealth.TakeDamage(data.GetUser(),healthAmount);
             }
         }
     }

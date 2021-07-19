@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b08a6573e585f364b8dcd6afbe488709, type: 3}
-  m_Name: HealthEffect
+  m_Name: Damage Effect
   m_EditorClassIdentifier: 
   healthAmount: 20
-  isHealing: 1
+  isHealing: 0

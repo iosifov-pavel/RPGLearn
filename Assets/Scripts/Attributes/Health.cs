@@ -40,6 +40,12 @@ namespace RPG.Core{
             print("HP: "+health);
         }
 
+        public void Heal(GameObject instigator, float amount){
+            if(isDead) return;
+            health += amount;
+            if(health>GetMAXHp()) health = GetMAXHp();
+        }
+
         private void Die()
         {
             isDead = true;
