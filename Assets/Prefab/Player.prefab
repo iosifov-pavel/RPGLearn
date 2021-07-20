@@ -178,6 +178,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a067afd7a66959479fbf4e723cd7804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7835713333029862455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8364875607766541323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d939ca4797a65d248a741b145f2fe664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config:
+  - trait: 0
+    stat: 0
+    additiveBonusPerPoint: 5
+    percentageBonusPerPoint: 0
+  - trait: 2
+    stat: 0
+    additiveBonusPerPoint: 0
+    percentageBonusPerPoint: 5
+  - trait: 3
+    stat: 0
+    additiveBonusPerPoint: 0
+    percentageBonusPerPoint: 0
+  - trait: 0
+    stat: 3
+    additiveBonusPerPoint: 1
+    percentageBonusPerPoint: 5
+  - trait: 1
+    stat: 3
+    additiveBonusPerPoint: 2
+    percentageBonusPerPoint: 0
+  - trait: 3
+    stat: 1
+    additiveBonusPerPoint: 5
+    percentageBonusPerPoint: 0
+  unassignedPoints: 10
 --- !u!114 &8904206348017177836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,19 +241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingBalance: 400
---- !u!114 &7835713333029862455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8364875607766541323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d939ca4797a65d248a741b145f2fe664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unassignedPoints: 10
 --- !u!1001 &595235822656169352
 PrefabInstance:
   m_ObjectHideFlags: 0

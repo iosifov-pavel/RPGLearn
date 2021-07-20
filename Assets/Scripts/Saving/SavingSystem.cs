@@ -110,5 +110,13 @@ namespace GameDevTV.Saving
         {
             return Path.Combine(Application.persistentDataPath, saveFile + ".sav");
         }
+
+        public IEnumerable<string> ListOfSaves(){
+            foreach(string path in Directory.EnumerateFiles(Application.persistentDataPath)){
+                if(Path.GetExtension(path) == ".sav"){
+                    yield return Path.GetFileNameWithoutExtension(path);
+                }
+            }
+        }
     }
 }

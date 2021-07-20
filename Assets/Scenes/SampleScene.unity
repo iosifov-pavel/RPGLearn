@@ -3218,7 +3218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1640164176, guid: 13dc2c8fdee962641a3a0e9bdd4d8afe, type: 3}
       propertyPath: sceneToLoad
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4924400437619266248, guid: 13dc2c8fdee962641a3a0e9bdd4d8afe,
         type: 3}
@@ -3652,7 +3652,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1640164176, guid: 13dc2c8fdee962641a3a0e9bdd4d8afe, type: 3}
       propertyPath: sceneToLoad
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4924400437619266248, guid: 13dc2c8fdee962641a3a0e9bdd4d8afe,
         type: 3}
@@ -13188,7 +13188,7 @@ PrefabInstance:
     - target: {fileID: 6842397166370742652, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -570.7499
+      value: -570.75
       objectReference: {fileID: 0}
     - target: {fileID: 6842949200121738206, guid: e3c08d7080ad80946b959704b31d95f6,
         type: 3}
