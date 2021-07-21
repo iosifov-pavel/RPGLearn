@@ -12,8 +12,8 @@ namespace RPG.Core{
         float health = -1f;
         [SerializeField] TakeDamageEvent takeDamage;
         [SerializeField] TakeDamageEvent updateBar;
-        [SerializeField] UnityEvent onDie;
-        bool isDead = false;
+        [SerializeField] public UnityEvent onDie;
+        bool wasDeadLastFrame = false;
         BaseStats stats;
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>{
@@ -21,7 +21,7 @@ namespace RPG.Core{
         }
 
         public void TakeDamage(GameObject instigator, float damage){
-            if(isDead) return;
+            if(IsDead()) return;
             print(gameObject.name + " D "+ damage);
             health = Mathf.Max(health-damage,0);
             float percent = GetPercentage()/100f;
@@ -31,26 +31,31 @@ namespace RPG.Core{
                     instigator.GetComponent<Expierence>().GainExpierence(stats.GetStat(Stat.ExpierenceReward));
                 }
                 onDie.Invoke();
-                Die();
             }
             else{
                 takeDamage.Invoke(damage);
             }
+            UpdateState();
             updateBar.Invoke(percent);
             print("HP: "+health);
         }
 
         public void Heal(GameObject instigator, float amount){
-            if(isDead) return;
             health += amount;
             if(health>GetMAXHp()) health = GetMAXHp();
+            UpdateState();
         }
 
-        private void Die()
+        private void UpdateState()
         {
-            isDead = true;
-            GetComponent<Animator>().SetTrigger("dead");
-            GetComponent<Scheduler>().CancelCurrentAction();
+            if(!wasDeadLastFrame && IsDead()){
+                GetComponent<Animator>().SetTrigger("dead");
+                GetComponent<Scheduler>().CancelCurrentAction();
+            }
+            if(wasDeadLastFrame && !IsDead()){
+                GetComponent<Animator>().Rebind();
+            }
+            wasDeadLastFrame = IsDead();
         }
 
         public float GetPercentage(){
@@ -66,7 +71,7 @@ namespace RPG.Core{
         }
 
         public bool IsDead(){
-            return isDead;
+            return health<=0;
         }
         void Start()
         {
@@ -95,7 +100,7 @@ namespace RPG.Core{
         {
             health = (float)state ;
             if(health==0){
-                Die();
+                UpdateState();
             }
         }
     }
